@@ -47,7 +47,7 @@ function Input({
   );
 
   return (
-    <div className="flex flex-col gap-[14px]">
+    <div className="flex flex-col gap-2">
       {isLabel && (
         <label htmlFor={inputId} className="font-semibold text-sm">
           {label}
