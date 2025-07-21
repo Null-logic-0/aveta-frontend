@@ -7,6 +7,7 @@ import AuthRedirectLink from "./AuthRedirectLink";
 import GoogleOAuth from "./GoogleOAuth";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineEmail } from "react-icons/md";
+import { Link } from "react-router";
 
 function SignInForm() {
   return (
@@ -32,7 +33,13 @@ function SignInForm() {
         icon={<TbLockPassword className="text-2xl text-[#818DA2]" />}
       />
 
-      <Button>Sign in</Button>
+      <Button buttonType="fill">Sign in</Button>
+      <Link
+        to="/forgot-password"
+        className="text-sm font-semibold opacity-50 hover:opacity-100 underline"
+      >
+        Forgot password ?
+      </Link>
       <Separator />
       <GoogleOAuth />
       <AuthRedirectLink
