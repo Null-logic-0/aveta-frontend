@@ -1,7 +1,8 @@
-import Input from "../UI/Input";
 import { TbLockPassword } from "react-icons/tb";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+
+import Input from "../UI/Input";
 import Heading from "../UI/Heading";
 import AuthForm from "./AuthForm";
 import Button from "../UI/Button";
@@ -47,7 +48,7 @@ function SignUpForm() {
         hasIcon
         icon={<TbLockPassword className="text-2xl text-[#818DA2]" />}
       />
-      <Button>Sign up</Button>
+      <Button buttonType="fill">Sign up</Button>
       <Separator />
       <GoogleOAuth />
       <AuthRedirectLink

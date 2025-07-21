@@ -3,7 +3,7 @@ import SignInForm from "../components/authentication/SignInForm";
 
 function SignIn() {
   return (
-    <AuthLayout className="h-screen">
+    <AuthLayout>
       <SignInForm />
     </AuthLayout>
   );
