@@ -1,6 +1,10 @@
+@import "tailwindcss";
+
 :root {
   font-family: "DM Sans", sans-serif;
   font-synthesis: none;
+  background-color: #18181b;
+  color: #ffffff;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

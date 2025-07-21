@@ -1,5 +1,12 @@
+import AuthLayout from "../components/authentication/AuthLayout";
+import SignInForm from "../components/authentication/SignInForm";
+
 function SignIn() {
-  return <div>Sign-in</div>;
+  return (
+    <AuthLayout className="h-screen">
+      <SignInForm />
+    </AuthLayout>
+  );
 }
 
 export default SignIn;
