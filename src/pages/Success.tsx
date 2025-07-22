@@ -1,5 +1,5 @@
-import Heading from "../UI/Heading";
-import Icon from "../../assets/received.png";
+import Heading from "../components/UI/Heading";
+import Icon from "../assets/received.png";
 import { Link } from "react-router";
 
 function Success() {

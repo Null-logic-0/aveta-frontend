@@ -1,8 +1,9 @@
+import { FormEvent } from "react";
 import { twMerge } from "tailwind-merge";
 
 type AuthFormType = {
   children: React.ReactNode;
-  onSubmit?: () => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   className?: string;
 };
 
