@@ -10,14 +10,12 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
     label?: string;
     hasIcon?: boolean;
     icon?: React.ReactNode;
-    isError?: boolean;
     error?: string;
   };
 
 function Input({
   isTextArea,
   isPassword,
-  isError,
   error,
   isLabel,
   label,
@@ -41,7 +39,7 @@ function Input({
 
   const mergedClass = twMerge(
     `w-full border ${
-      isError ? "border-[#E50000]" : "border-[#3B3A3F]"
+      error ? "border-[#E50000]" : "border-[#3B3A3F]"
     }  font-medium text-sm rounded-[6px] pl-[42px] py-3 focus:border-white focus:outline-none`,
     className
   );
@@ -76,7 +74,7 @@ function Input({
           {isPassword && (
             <button
               type="button"
-              className="bg-transparent absolute right-3"
+              className="bg-transparent absolute right-3 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
@@ -88,7 +86,7 @@ function Input({
           )}
         </div>
       )}
-      {isError && <p className="text-sm text-[#E50000] font-medium">{error}</p>}
+      {error && <p className="text-sm text-[#E50000] font-medium">{error}</p>}
     </div>
   );
 }
