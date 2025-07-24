@@ -3,8 +3,22 @@ import { RouterProvider } from "react-router/dom";
 import { Toaster } from "react-hot-toast";
 import { queryClient } from "./constants/query-client.constants";
 import { router } from "./components/routes/router";
+import { useEffect } from "react";
+import { RootState } from "./store";
+import { useSelector } from "react-redux";
+import { handleTokenExpiry } from "./util/token-expiry-handler";
 
 function App() {
+  const accessToken = useSelector((state: RootState) => state.auth.accessToken);
+  const refreshToken = useSelector(
+    (state: RootState) => state.auth.refreshToken
+  );
+
+  useEffect(() => {
+    if (accessToken && refreshToken) {
+      handleTokenExpiry(accessToken, refreshToken);
+    }
+  }, [accessToken, refreshToken]);
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster

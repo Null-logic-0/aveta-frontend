@@ -36,7 +36,7 @@ function Button({
       {...rest}
     >
       {isPending && <SpinnerMini />}
-      <span>{children}</span>
+      {children}
     </button>
   );
 }

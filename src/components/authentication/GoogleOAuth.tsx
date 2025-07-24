@@ -1,18 +1,52 @@
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { FcGoogle } from "react-icons/fc";
+import {
+  CredentialResponse,
+  GoogleLogin,
+  GoogleOAuthProvider,
+} from "@react-oauth/google";
+import { useGoogleAuth } from "../../hooks/useGoogleAuth";
+import { GOOGLE_ID } from "../../constants/url.constants";
+import toast from "react-hot-toast";
+import Button from "../UI/Button";
+import { FaGoogle } from "react-icons/fa";
+import { useRef } from "react";
 
-function GoogleOAuth() {
+function GoogleAuth() {
+  const { mutate } = useGoogleAuth();
+  const googleLoginRef = useRef<HTMLDivElement>(null);
+
+  const handleGoogleResponse = (response: CredentialResponse) => {
+    if (response.credential) {
+      mutate({ credential: response.credential });
+    }
+  };
+
+  const triggerGoogleLogin = () => {
+    const button = googleLoginRef.current?.querySelector(
+      "div[role=button]"
+    ) as HTMLElement;
+    button?.click();
+  };
+
   return (
-    <GoogleOAuthProvider clientId={""}>
-      <button
-        onClick={() => {}}
-        className="flex items-center cursor-pointer hover:opacity-50 justify-center border border-[#3B3A3F] gap-2 rounded-[6px] py-3 px-2 w-full "
-      >
-        <FcGoogle className="text-2xl" />
-        <span className="text-sm font-semibold">Sign up with Google</span>
-      </button>
-    </GoogleOAuthProvider>
+    <div className="flex justify-center items-center ">
+      <div hidden ref={googleLoginRef}>
+        <GoogleOAuthProvider clientId={GOOGLE_ID}>
+          <GoogleLogin
+            size="large"
+            shape="square"
+            onSuccess={handleGoogleResponse}
+            onError={() => {
+              toast.error("Login Failed");
+            }}
+          />
+        </GoogleOAuthProvider>
+      </div>
+      <Button type="button" buttonType="outline" onClick={triggerGoogleLogin}>
+        <FaGoogle className="text-xl" />
+        Sign in with google
+      </Button>
+    </div>
   );
 }
 
-export default GoogleOAuth;
+export default GoogleAuth;

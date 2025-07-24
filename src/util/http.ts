@@ -8,6 +8,7 @@ import {
   ChangePassword,
   ErrorResponse,
   ForgotPassword,
+  GoogleLoginResponse,
   SignInRequest,
   SingUpRequest,
 } from "../interfaces/auth-api.interface";
@@ -53,6 +54,28 @@ export async function signin(data: SignInRequest): Promise<AuthResponse> {
     path: "sign-in",
     message: "Sign-in failed!",
   });
+}
+
+export async function googleSignIn({
+  credential,
+}: {
+  credential: string;
+}): Promise<GoogleLoginResponse> {
+  try {
+    const result = await axios.post(
+      `${URL}/google-auth`,
+      { token: credential },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return result.data;
+  } catch (err) {
+    throw buildApiError("Google sign in failed!", 500, err);
+  }
 }
 
 export async function signout(token: string) {
