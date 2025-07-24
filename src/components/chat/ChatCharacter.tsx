@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import defaultProfile from "../../assets/default.jpg";
+import RoundedImage from "../UI/RoundedImage";
 
 type ChatCharacterProps = {
   link: string;
@@ -14,11 +15,7 @@ function ChatCharacter({ link }: ChatCharacterProps) {
               isActive && "bg-[#3B3A3F]/50"
             } hover:bg-[#3B3A3F]/50`}
           >
-            <img
-              src={defaultProfile}
-              alt="character-image"
-              className="rounded-full w-[36px] h-[36px] object-cover"
-            />
+            <RoundedImage src={defaultProfile} alt="character-image" />
             <span className="text-sm font-semibold">Salina</span>
           </div>
         )}
