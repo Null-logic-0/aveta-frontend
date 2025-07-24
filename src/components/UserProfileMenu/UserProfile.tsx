@@ -3,6 +3,7 @@ import defaultProfile from "../../assets/default.jpg";
 import { useAuth } from "../../hooks/useAuth";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import UserProfileMenuList from "./UserProfileMenuList";
+import RoundedImage from "../UI/RoundedImage";
 
 function UserProfile() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,10 +22,9 @@ function UserProfile() {
         }  rounded-[6px]`}
       >
         <div className="flex items-center justify-center gap-[6px]">
-          <img
+          <RoundedImage
             src={user?.profileImage || defaultProfile}
             alt="User profile image"
-            className="rounded-full w-[36px] h-[36px] object-cover"
           />
           <p className="flex flex-col  text-sm font-semibold">
             <span>{user?.userName}</span>
