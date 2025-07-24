@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { active: null, isSidebarOpen: true },
+  initialState: { active: null, isSidebarOpen: false },
   reducers: {
     open(state, action) {
       state.active = action.payload;
