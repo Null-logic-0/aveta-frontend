@@ -10,15 +10,11 @@ import { handleTokenExpiry } from "./util/token-expiry-handler";
 
 function App() {
   const accessToken = useSelector((state: RootState) => state.auth.accessToken);
-  const refreshToken = useSelector(
-    (state: RootState) => state.auth.refreshToken
-  );
-
   useEffect(() => {
-    if (accessToken && refreshToken) {
-      handleTokenExpiry(accessToken, refreshToken);
+    if (accessToken) {
+      handleTokenExpiry(accessToken);
     }
-  }, [accessToken, refreshToken]);
+  }, [accessToken]);
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster

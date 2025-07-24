@@ -8,7 +8,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   accessToken: getCookie("accessToken") || null,
-  refreshToken: getCookie("refreshToken") || null,
+  refreshToken: null,
 };
 
 const authSlice = createSlice({
