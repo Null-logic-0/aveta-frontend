@@ -8,7 +8,7 @@ interface JWTPayload {
   exp: number;
 }
 
-export function handleTokenExpiry(accessToken: string, refreshToken: string) {
+export function handleTokenExpiry(accessToken: string) {
   try {
     const decoded = jwtDecode<JWTPayload>(accessToken);
     const expiryTimeMs = decoded.exp * 1000 - Date.now();
@@ -18,6 +18,14 @@ export function handleTokenExpiry(accessToken: string, refreshToken: string) {
 
     if (refreshInMs > 0) {
       refreshTimer = setTimeout(async () => {
+        const state = store.getState();
+        const refreshToken = state.auth.refreshToken;
+
+        if (!refreshToken) {
+          store.dispatch(clearAuth());
+          return;
+        }
+
         try {
           const res = await fetch(`${URL}/auth/refresh-tokens`, {
             method: "POST",
@@ -26,10 +34,11 @@ export function handleTokenExpiry(accessToken: string, refreshToken: string) {
           });
 
           if (!res.ok) throw new Error("Token refresh failed");
-          const data = await res.json();
 
+          const data = await res.json();
           store.dispatch(setAuth(data));
-          handleTokenExpiry(data.accessToken, data.refreshToken);
+
+          handleTokenExpiry(data.accessToken);
         } catch (err) {
           console.error("Refresh failed:", err);
           store.dispatch(clearAuth());
