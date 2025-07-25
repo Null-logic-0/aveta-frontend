@@ -1,31 +1,19 @@
 import { Outlet } from "react-router";
-import { HiMenuAlt2 } from "react-icons/hi";
-import SideBar from "../components/side-bar/SideBar";
-import { useDispatch, useSelector } from "react-redux";
-import { openSideBar } from "../store/UI-slice";
-import { RootState } from "../store";
+import SideBar from "../components/SideBar";
+
+import BurgerMenuButton from "../components/UI/BurgerMenuButton";
+import UserPlanIndicator from "../components/UI/UserPlanIndicator";
 
 function RootLayout() {
-  const dispatch = useDispatch();
-  const activeSideBar = useSelector(
-    (state: RootState) => state.ui.isSidebarOpen
-  );
-
   return (
-    <div className="flex">
-      {!activeSideBar && (
-        <button
-          className="cursor-pointer fixed z-50 top-2 left-2"
-          onClick={() => dispatch(openSideBar())}
-        >
-          <HiMenuAlt2 className="text-2xl" />
-        </button>
-      )}
+    <main className="flex">
+      <BurgerMenuButton />
+      <UserPlanIndicator />
       <SideBar />
-      <main className="flex flex-col justify-center md:ml-[275px] items-center p-6 w-full">
+      <div className="flex flex-col justify-center md:ml-[275px] items-center p-6 w-full">
         <Outlet />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 

@@ -2,18 +2,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 
-import Button from "../UI/Button";
-import Logo from "../UI/Logo";
-import UserProfile from "../UserProfileMenu/UserProfile";
-import { closeSideBar } from "../../store/UI-slice";
-import { RootState } from "../../store";
-import ChatCharacters from "../chat/ChatCharacters";
+import Button from "./UI/Button";
+import Logo from "./UI/Logo";
+import UserProfile from "./UserProfileMenu/UserProfile";
+import { closeSideBar } from "../store/UI-slice";
+import { RootState } from "../store";
+import ChatCharacters from "./chat/ChatCharacters";
+import { useEffect } from "react";
 
 function SideBar() {
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector(
     (state: RootState) => state.ui.isSidebarOpen
   );
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen]);
 
   return (
     <>

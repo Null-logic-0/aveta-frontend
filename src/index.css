@@ -15,3 +15,9 @@ input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #11141d inset !important;
   -webkit-text-fill-color: #fff !important;
 }
+
+:where(.css-dev-only-do-not-override-7t2xvq).ant-empty .ant-empty-description {
+  color: white !important;
+  font-weight: 600;
+  font-size: 18px;
+}
