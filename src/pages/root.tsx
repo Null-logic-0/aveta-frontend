@@ -12,7 +12,7 @@ function RootLayout() {
   );
 
   return (
-    <>
+    <div className="flex">
       {!activeSideBar && (
         <button
           className="cursor-pointer fixed z-50 top-2 left-2"
@@ -22,8 +22,10 @@ function RootLayout() {
         </button>
       )}
       <SideBar />
-      <Outlet />
-    </>
+      <main className="flex flex-col justify-center md:ml-[275px] items-center  p-8  w-full">
+        <Outlet />
+      </main>
+    </div>
   );
 }
 
