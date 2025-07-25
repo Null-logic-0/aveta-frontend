@@ -22,7 +22,7 @@ function RootLayout() {
         </button>
       )}
       <SideBar />
-      <main className="flex flex-col justify-center md:ml-[275px] items-center  p-8  w-full">
+      <main className="flex flex-col justify-center md:ml-[275px] items-center p-6 w-full">
         <Outlet />
       </main>
     </div>

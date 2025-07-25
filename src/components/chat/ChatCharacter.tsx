@@ -12,8 +12,8 @@ function ChatCharacter({ link }: ChatCharacterProps) {
         {({ isActive }) => (
           <div
             className={`flex w-full items-center justify-start p-2 gap-[6px] rounded-[6px] ${
-              isActive && "bg-[#3B3A3F]/50"
-            } hover:bg-[#3B3A3F]/50`}
+              isActive && "bg-[#1E1E25]/50"
+            } hover:bg-[#1E1E25]/50`}
           >
             <RoundedImage src={defaultProfile} alt="character-image" />
             <span className="text-sm font-semibold">Salina</span>

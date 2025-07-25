@@ -15,7 +15,7 @@ function UserProfile() {
     <div className="flex flex-col items-center gap-2 fixed bottom-4 w-full max-md:max-w-[240px] max-w-[260px] z-10">
       <UserProfileMenuList openMenu={openMenu} />
       <div
-        className={`flex w-full  justify-between items-center py-2 px-2 bg-[#11141D] ${
+        className={`flex w-full  justify-between items-center py-2 px-2 bg-[#1E1E25] ${
           isPaid
             ? "bg-gradient-to-r from-[#FF4DC3]/50 to-[#8A38F5]/50 "
             : "border border-[#3B3A3F]"
