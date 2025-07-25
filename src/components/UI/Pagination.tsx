@@ -5,7 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  onPageChange?: (page: number) => void;
+  onPageChange: (page: number) => void;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
     <div className="flex items-center space-x-2">
       {/* Prev button */}
       <button
-        // onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="cursor-pointer  disabled:opacity-50 disabled:cursor-not-allowed"
       >
@@ -35,7 +35,7 @@ const Pagination: React.FC<PaginationProps> = ({
       {visiblePages.map((page) => (
         <button
           key={page}
-          //   onClick={() => onPageChange(page)}
+          onClick={() => onPageChange(page)}
           className={`px-3 py-1 cursor-pointer rounded ${
             page === currentPage ? "bg-[#8A38F5] text-white" : undefined
           }`}
@@ -48,7 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <>
           <span className="px-2">...</span>
           <button
-            // onClick={() => onPageChange(totalPages)}
+            onClick={() => onPageChange(totalPages)}
             className={`px-3 py-1 cursor-pointer  rounded ${
               currentPage === totalPages ? "bg-[#8A38F5] text-white" : undefined
             }`}
@@ -60,7 +60,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
       {/* Next button */}
       <button
-        // onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="cursor-pointer  disabled:opacity-50 disabled:cursor-not-allowed"
       >

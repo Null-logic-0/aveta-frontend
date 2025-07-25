@@ -140,3 +140,45 @@ export async function getMe(token: string): Promise<GetMeResponse> {
     throw buildApiError("Failed to get user profile!", 500, err);
   }
 }
+
+export async function getAllCharacters(
+  token: string,
+  queryParams?: Record<string, string | number | boolean | undefined>
+) {
+  assertTokenExists(token);
+  try {
+    const query = new URLSearchParams();
+
+    if (queryParams) {
+      Object.entries(queryParams).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== "") {
+          query.append(key, value.toString().toLowerCase());
+        }
+      });
+    }
+    const response = await axios.get(`${URL}/characters?${query.toString()}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch all characters!", 500, err);
+  }
+}
+
+export async function getOneCharacter(token: string, id: number) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(`${URL}/characters/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response;
+  } catch (err) {
+    throw buildApiError("Failed to fetch single character!", 500, err);
+  }
+}
