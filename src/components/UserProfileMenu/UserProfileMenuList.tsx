@@ -17,7 +17,7 @@ function UserProfileMenuList({ openMenu }: { openMenu: boolean }) {
             : "max-h-0 opacity-0 scale-95"
         )}
       >
-        <ul className="bg-[#202024] w-full rounded-[6px]  p-2 flex flex-col gap-2">
+        <ul className="bg-[#1E1E25] w-full rounded-[6px]  p-2 flex flex-col gap-2">
           <UserProfileMenuItem disabled={isPending}>
             Settings
             <IoSettingsSharp />

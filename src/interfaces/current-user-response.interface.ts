@@ -6,7 +6,7 @@ export interface GetMeResponse {
       email: string;
       profileImage?: string;
       role: string;
-      userPlan: string;
+      UserPlan: string;
       isPaid: boolean;
       googleId?: string;
       createdAt: string;

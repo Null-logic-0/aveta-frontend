@@ -21,7 +21,7 @@ function Button({
   const buttonStyle =
     buttonType === "fill"
       ? "bg-[#8A38F5]"
-      : "bg-[#11141D] border border-[#3B3A3F]";
+      : "bg-[#1E1E25] border border-[#3B3A3F]";
   return (
     <button
       disabled={isDisabled}

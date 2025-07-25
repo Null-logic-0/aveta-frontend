@@ -27,7 +27,7 @@ function Tags() {
   const visibleTags = TAGS.slice(0, 3);
   const remainingCount = TAGS.length - visibleTags.length;
   return (
-    <ul className="flex items-center gap-2">
+    <ul className="flex items-center flex-wrap gap-2">
       {visibleTags.map((tag) => (
         <Tag key={tag.id} tagName={tag.tagName} />
       ))}

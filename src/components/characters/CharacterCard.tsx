@@ -9,12 +9,12 @@ import { Link } from "react-router";
 
 function CharacterCard() {
   return (
-    <div className="max-w-[342px] flex flex-col gap-3 w-full p-3 bg-[#1E1E25] rounded-xl">
-      <div className="flex items-start justify-center gap-3">
+    <div className="min-xl:max-w-[330px] max-xl:max-w-[375px] lg:max-w-[325px] sm:max-w-[375px] max-md:max-w-[375px] md:max-w-[300px]  flex flex-col gap-3  p-3 bg-[#1E1E25] rounded-xl">
+      <div className="flex items-start  gap-3">
         <RoundedImage
           src={defaultProfile}
           alt="User profile image"
-          className="w-[52px] h-[52px]"
+          className="w-[52px] h-[52px] "
         />
         <div className="flex flex-col gap-2">
           <Link to="#">

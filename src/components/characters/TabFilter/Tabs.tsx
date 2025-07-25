@@ -16,7 +16,7 @@ function Tabs() {
   };
 
   return (
-    <div className="flex gap-2 items-center flex-wrap">
+    <div className="flex gap-2 items-center max-lg:justify-center flex-wrap">
       <Tab
         label="All"
         isActive={activeTab === "all"}
