@@ -29,6 +29,7 @@ function CharactersList({ characters, isLoading }: CharactersListProps) {
       {characters?.map((character: CharacterInterface) => (
         <CharacterCard
           key={character.id}
+          characterId={character.id}
           avatar={character.avatar}
           characterName={character.characterName}
           description={character.description}
