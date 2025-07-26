@@ -9,11 +9,12 @@ import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import { CharacterInterface } from "../interfaces/character.interface";
 import ReturnButton from "../components/UI/ReturnButton";
 import Spinner from "../components/UI/Spinner/Spinner";
+import { toNumericId } from "../helpers/toNumericId";
 
 function CharacterDetails() {
   const { characterId } = useParams();
 
-  const numericId = characterId ? parseInt(characterId, 10) : undefined;
+  const numericId = toNumericId(characterId);
 
   const { data: characterData, isLoading } = useFetchCharacter({
     id: numericId as number,

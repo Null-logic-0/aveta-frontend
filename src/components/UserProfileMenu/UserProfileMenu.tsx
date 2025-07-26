@@ -5,15 +5,21 @@ import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import UserProfileMenuList from "./UserProfileMenuList";
 import RoundedImage from "../UI/RoundedImage";
 
-function UserProfile() {
+function UserProfileMenu() {
   const [openMenu, setOpenMenu] = useState(false);
   const { data } = useAuth();
   const user = data?.data.data;
   const isPaid = user?.isPaid;
+  const isAdmin = ["admin", "creator"].includes(user?.role ?? "");
 
   return (
     <div className="flex flex-col items-center gap-2 fixed bottom-4 w-full max-md:max-w-[240px] max-w-[260px] z-10">
-      <UserProfileMenuList openMenu={openMenu} />
+      <UserProfileMenuList
+        openMenu={openMenu}
+        userId={user?.id}
+        onClose={() => setOpenMenu(false)}
+        isAdmin={isAdmin}
+      />
       <div
         className={`flex w-full  justify-between items-center py-2 px-2 bg-[#1E1E25] ${
           isPaid
@@ -46,4 +52,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default UserProfileMenu;

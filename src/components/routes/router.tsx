@@ -10,6 +10,7 @@ import RootLayout from "../../pages/root";
 import ProtectRoutes from "../guards/ProtectRoutes";
 import AuthRootLayout from "../../pages/auth-root";
 import CharacterDetails from "../../pages/character-details";
+import UserProfile from "../../pages/user-profile";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "/:characterId",
         element: <CharacterDetails />,
+      },
+      {
+        path: "/profile/:userId",
+        element: <UserProfile />,
       },
     ],
   },

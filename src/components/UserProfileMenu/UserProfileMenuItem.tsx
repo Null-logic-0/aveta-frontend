@@ -5,11 +5,13 @@ type UserProfileMenuItemProps = {
   link?: string;
   operation?: () => void;
   disabled?: boolean;
+  onClose: () => void;
 };
 
 function UserProfileMenuItem({
   children,
   link,
+  onClose,
   operation,
   disabled,
 }: UserProfileMenuItemProps) {
@@ -22,6 +24,7 @@ function UserProfileMenuItem({
     if (operation) {
       operation();
     }
+    onClose();
   }
   return (
     <li>

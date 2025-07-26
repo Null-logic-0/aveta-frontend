@@ -1,15 +1,15 @@
+import { useEffect } from "react";
+import { Link } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import { closeSideBar } from "../store/UI-slice";
+import { RootState } from "../store";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 
 import Button from "./UI/Button";
 import Logo from "./UI/Logo";
-import UserProfile from "./UserProfileMenu/UserProfile";
-import { closeSideBar } from "../store/UI-slice";
-import { RootState } from "../store";
 import ChatCharacters from "./chat/ChatCharacters";
-import { useEffect } from "react";
-import { Link } from "react-router";
+import UserProfileMenu from "./UserProfileMenu/UserProfileMenu";
 
 function SideBar() {
   const dispatch = useDispatch();
@@ -67,7 +67,7 @@ function SideBar() {
           <hr className="opacity-30" />
           <ChatCharacters />
         </div>
-        <UserProfile />
+        <UserProfileMenu />
       </div>
     </>
   );
