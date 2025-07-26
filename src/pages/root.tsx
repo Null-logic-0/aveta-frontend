@@ -8,6 +8,7 @@ function RootLayout() {
   return (
     <main className="flex">
       <BurgerMenuButton />
+
       <UserPlanIndicator />
       <SideBar />
       <div className="flex flex-col justify-center md:ml-[275px] items-center p-6 w-full">

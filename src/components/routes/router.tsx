@@ -9,6 +9,7 @@ import ChangePassword from "../../pages/change-password";
 import RootLayout from "../../pages/root";
 import ProtectRoutes from "../guards/ProtectRoutes";
 import AuthRootLayout from "../../pages/auth-root";
+import CharacterDetails from "../../pages/character-details";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/:characterId",
+        element: <CharacterDetails />,
       },
     ],
   },

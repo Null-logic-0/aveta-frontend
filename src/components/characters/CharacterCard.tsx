@@ -1,12 +1,10 @@
 import { Link } from "react-router";
-import { FaRegHeart } from "react-icons/fa6";
-import { FaRegComment } from "react-icons/fa";
 import { textSlicer } from "../../helpers/text-slice";
-
 import defaultProfile from "../../assets/default.jpg";
 import RoundedImage from "../UI/RoundedImage";
 import Button from "../UI/Button";
 import Tags from "./tags/Tags";
+import CharacterStats from "./CharacterStats";
 
 type CharacterProps = {
   characterName: string;
@@ -15,6 +13,7 @@ type CharacterProps = {
   tags: string[];
   creator: string;
   likes: number;
+  characterId: number;
 };
 
 function CharacterCard({
@@ -22,6 +21,7 @@ function CharacterCard({
   avatar,
   creator,
   description,
+  characterId,
   tags,
   likes,
 }: CharacterProps) {
@@ -34,7 +34,7 @@ function CharacterCard({
           className="w-[52px] h-[52px] "
         />
         <div className="flex flex-col gap-2">
-          <Link to="#">
+          <Link to={`/${characterId}`}>
             <p className="font-bold text-lg hover:underline underline-offset-2">
               {characterName}
             </p>
@@ -42,15 +42,7 @@ function CharacterCard({
           <p className="font-medium text-sm opacity-50">
             {textSlicer(description, 50)}
           </p>
-          <div className="flex gap-3 items-center">
-            <span className="flex items-center gap-2 opacity-55 font-semibold">
-              <FaRegHeart />
-              {likes}
-            </span>
-            <span className="flex items-center gap-2 opacity-55 font-semibold">
-              <FaRegComment />0
-            </span>
-          </div>
+          <CharacterStats likes={likes} />
           <Tags tags={tags} />
         </div>
       </div>

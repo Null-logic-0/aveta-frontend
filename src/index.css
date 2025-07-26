@@ -16,8 +16,13 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #fff !important;
 }
 
+:where(.css-dev-only-do-not-override-7t2xvq).ant-empty .ant-empty-image {
+  opacity: 70%;
+}
+
 :where(.css-dev-only-do-not-override-7t2xvq).ant-empty .ant-empty-description {
-  color: white !important;
+  color: whitesmoke !important;
+  opacity: 70%;
   font-weight: 600;
   font-size: 18px;
 }

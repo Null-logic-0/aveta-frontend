@@ -9,6 +9,7 @@ import { closeSideBar } from "../store/UI-slice";
 import { RootState } from "../store";
 import ChatCharacters from "./chat/ChatCharacters";
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 function SideBar() {
   const dispatch = useDispatch();
@@ -46,7 +47,9 @@ function SideBar() {
       >
         <div className="flex flex-col gap-5">
           <div className="flex justify-between items-center ">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <button
               className="cursor-pointer md:hidden"
               onClick={() => {

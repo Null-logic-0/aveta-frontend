@@ -10,7 +10,7 @@ export function useFetchCharacter({ id }: { id: number }) {
     queryFn: () => {
       if (!id) throw new Error("Character not found!");
       if (!token) throw new Error("Invalid credentials!");
-      getOneCharacter(token, id);
+      return getOneCharacter(token, id);
     },
     retry: false,
     enabled: !!id || !!token,

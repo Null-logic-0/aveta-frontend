@@ -4,7 +4,7 @@ type TagsProps = {
   tags: string[];
 };
 
-function Tags({ tags }: TagsProps) {
+function Tags({ tags = [] }: TagsProps) {
   const visibleTags = tags.slice(0, 3);
   const remainingCount = tags.length - visibleTags.length;
   return (
