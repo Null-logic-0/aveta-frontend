@@ -17,7 +17,7 @@ function LikedCharacters({ id }: { id?: number }) {
   const characters = likedCharactersData?.data?.data;
   const pagination = likedCharactersData?.data;
 
-  if (characters.length === 0 && !isLoading) {
+  if (characters?.length === 0 && !isLoading) {
     return (
       <div className="mt-6 flex justify-center items-center">
         <Empty description="Invalid user ID" />

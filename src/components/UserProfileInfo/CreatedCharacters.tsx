@@ -18,7 +18,7 @@ function CreatedCharacters({ id }: { id?: number }) {
 
   const pagination = data?.data;
 
-  if (characters.length === 0 && !isLoading) {
+  if (characters?.length === 0 && !isLoading) {
     return (
       <div className="mt-6 flex justify-center items-center">
         <Empty description="Invalid user ID" />
