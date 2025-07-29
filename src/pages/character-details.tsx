@@ -10,9 +10,13 @@ import { CharacterInterface } from "../interfaces/character.interface";
 import ReturnButton from "../components/UI/ReturnButton";
 import Spinner from "../components/UI/Spinner/Spinner";
 import { toNumericId } from "../helpers/toNumericId";
+import { useAuth } from "../hooks/useAuth";
 
 function CharacterDetails() {
   const { characterId } = useParams();
+  const { data: currentUser } = useAuth();
+
+  const user = currentUser?.data?.data;
 
   const numericId = toNumericId(characterId);
 
@@ -50,6 +54,9 @@ function CharacterDetails() {
       <ReturnButton />
       <div className="flex flex-col gap-6 mt-6">
         <CharacterDetailCard
+          loggedInUserId={user?.id}
+          creatorId={character?.creator?.id}
+          characterId={character?.id}
           avatar={character?.avatar}
           characterName={character?.characterName}
           creator={character?.creator?.userName}

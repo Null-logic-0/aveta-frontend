@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { active: null, isSidebarOpen: false },
+  initialState: { active: null, isSidebarOpen: false, selectedImage: "" },
   reducers: {
     open(state, action) {
       state.active = action.payload;
@@ -16,9 +16,24 @@ const uiSlice = createSlice({
     closeSideBar(state) {
       state.isSidebarOpen = false;
     },
+
+    selectImage(state, action) {
+      state.selectedImage = action.payload;
+    },
+
+    clearSelectedImage(state) {
+      state.selectedImage = "";
+    },
   },
 });
 
-export const { open, close, openSideBar, closeSideBar } = uiSlice.actions;
+export const {
+  open,
+  close,
+  openSideBar,
+  closeSideBar,
+  selectImage,
+  clearSelectedImage,
+} = uiSlice.actions;
 
 export default uiSlice;

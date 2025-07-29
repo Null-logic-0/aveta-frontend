@@ -11,6 +11,8 @@ import ProtectRoutes from "../guards/ProtectRoutes";
 import AuthRootLayout from "../../pages/auth-root";
 import CharacterDetails from "../../pages/character-details";
 import UserProfile from "../../pages/user-profile";
+import CreateCharacter from "../../pages/create-character";
+import UpdateCharacter from "../../pages/update-character";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +56,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/create-character",
+        element: <CreateCharacter />,
+      },
+      {
+        path: "/update-character/:characterId",
+        element: <UpdateCharacter />,
       },
       {
         path: "/:characterId",

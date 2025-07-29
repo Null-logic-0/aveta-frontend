@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { useMutation } from "@tanstack/react-query";
-import { AuthResponse, ErrorResponse } from "../interfaces/auth-api.interface";
-import { queryClient } from "../constants/query-client.constants";
-import toast from "react-hot-toast";
 import { setAuth } from "../store/auth-slice";
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { AuthResponse } from "../interfaces/auth-api.interface";
+import { queryClient } from "../constants/query-client.constants";
+import { ErrorResponse } from "../interfaces/error-response.interface";
+import toast from "react-hot-toast";
 
 export function useAuthMutation<Req>(
   mutationFn: (data: Req) => Promise<AuthResponse>,

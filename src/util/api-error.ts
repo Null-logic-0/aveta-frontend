@@ -13,3 +13,14 @@ export function buildApiError(
 
   return error;
 }
+
+export function buildValidationError(
+  message: string,
+  code: number,
+  responseData: unknown
+) {
+  const error = new Error(message);
+  (error as any).response = { data: responseData };
+  (error as any).code = code;
+  return error;
+}

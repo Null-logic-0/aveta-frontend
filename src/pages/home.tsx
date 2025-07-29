@@ -32,7 +32,7 @@ function Home() {
         <Tabs />
         <CharactersList characters={characters} isLoading={isLoading} />
         <div className="w-full flex justify-end max-lg:justify-center max-w-[1000px]">
-          {!isLoading && characters.length > 6 && (
+          {!isLoading && (
             <Pagination
               onPageChange={(page) => setCurrentPage(page)}
               currentPage={currentPage}

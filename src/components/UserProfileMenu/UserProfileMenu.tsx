@@ -21,7 +21,7 @@ function UserProfileMenu() {
         isAdmin={isAdmin}
       />
       <div
-        className={`flex w-full  justify-between items-center py-2 px-2 bg-[#1E1E25] ${
+        className={`flex w-full justify-between items-center py-2 px-2 bg-[#1E1E25] ${
           isPaid
             ? "bg-gradient-to-r from-[#FF4DC3]/50 to-[#8A38F5]/50 "
             : "border border-[#3B3A3F]"

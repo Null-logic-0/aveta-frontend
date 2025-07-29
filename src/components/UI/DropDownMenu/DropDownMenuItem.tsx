@@ -1,19 +1,22 @@
 import { useNavigate } from "react-router";
+import { twMerge } from "tailwind-merge";
 
 type UserProfileMenuItemProps = {
   children: React.ReactNode;
+  onClose: () => void;
   link?: string;
   operation?: () => void;
   disabled?: boolean;
-  onClose: () => void;
+  className?: string;
 };
 
-function UserProfileMenuItem({
+function DropDownMenuItem({
   children,
   link,
   onClose,
   operation,
   disabled,
+  className,
 }: UserProfileMenuItemProps) {
   const navigate = useNavigate();
   function handleOperation() {
@@ -31,9 +34,12 @@ function UserProfileMenuItem({
       <button
         onClick={handleOperation}
         disabled={disabled}
-        className={`${
-          disabled ? "cursor-not-allowed" : "cursor-pointer"
-        } text-sm font-medium hover:bg-[#3B3A3F]/50 p-2 w-full flex justify-between items-center`}
+        className={twMerge(
+          `${
+            disabled ? "cursor-not-allowed" : "cursor-pointer"
+          } text-sm font-medium hover:bg-[#3B3A3F]/50 p-2 w-full flex justify-between items-center`,
+          className
+        )}
       >
         {children}
       </button>
@@ -41,4 +47,4 @@ function UserProfileMenuItem({
   );
 }
 
-export default UserProfileMenuItem;
+export default DropDownMenuItem;

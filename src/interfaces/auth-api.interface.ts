@@ -51,13 +51,6 @@ export interface GoogleLoginResponse {
   };
 }
 
-export interface ErrorResponse {
-  message: string[] | string;
-  error: string;
-  statusCode: number;
-  errors?: Record<string, string> | { field: string; message: string }[];
-}
-
 export interface ForgotPassword {
   email: string;
 }

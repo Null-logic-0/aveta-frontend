@@ -40,7 +40,9 @@ function Input({
   const mergedClass = twMerge(
     `w-full border ${
       error ? "border-[#E50000]" : "border-[#3B3A3F]"
-    }  font-medium text-sm rounded-[6px] pl-[42px] py-3 focus:border-white focus:outline-none`,
+    }  font-medium text-sm rounded-[6px] resize-none ${
+      hasIcon ? "pl-[42px]" : "px-3"
+    } py-3 focus:border-white focus:outline-none`,
     className
   );
 

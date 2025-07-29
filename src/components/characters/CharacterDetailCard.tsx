@@ -1,15 +1,17 @@
-import { Link } from "react-router";
-
 import RoundedImage from "../UI/RoundedImage";
+import defaultImage from "../../assets/default.jpg";
 import Button from "../UI/Button";
 import CardWrapper from "../UI/CardWrapper";
 import CharacterStats from "./CharacterStats";
+import CharacterMenuList from "./CharacterMenuList";
 
 type CharacterDetailProps = {
+  characterId: number;
+  creatorId: number;
+  loggedInUserId?: number;
   avatar: string;
   characterName: string;
   greeting: string;
-
   likes: number;
   creator: string;
 };
@@ -17,27 +19,29 @@ type CharacterDetailProps = {
 function CharacterDetailCard({
   avatar,
   characterName,
+  creatorId,
+  loggedInUserId,
+  characterId,
   greeting,
   likes,
   creator,
 }: CharacterDetailProps) {
   return (
     <CardWrapper>
+      {creatorId === loggedInUserId && (
+        <CharacterMenuList characterId={characterId} />
+      )}
       <div className="flex gap-2">
         <RoundedImage
-          src={avatar}
+          src={avatar || defaultImage}
           alt="character image"
           className="w-[124px] h-[124px] max-md:w-[50px] max-md:h-[50px]"
         />
         <div className="flex flex-col gap-4">
           <div>
             <p className="font-semibold text-lg">{characterName}</p>
-            <Link
-              to="#"
-              className="hover:underline opacity-50 hover:opacity-100 underline-offset-3"
-            >
-              <p className=" text-sm">By {creator}</p>
-            </Link>
+
+            <p className=" text-sm">By {creator}</p>
           </div>
           <CharacterStats likes={likes} />
           <p className="font-medium text-sm opacity-70 border-l-2 pl-2 border-[#8A38F5]">
