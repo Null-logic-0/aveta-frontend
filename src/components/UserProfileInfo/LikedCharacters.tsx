@@ -36,7 +36,7 @@ function LikedCharacters({ id }: { id?: number }) {
   return (
     <>
       <CharactersList characters={characters} isLoading={isLoading} />
-      {!isLoading && characters.length > 6 && (
+      {!isLoading && (
         <Pagination
           onPageChange={(page) => setCurrentPage(page)}
           currentPage={currentPage}

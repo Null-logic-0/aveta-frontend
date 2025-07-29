@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSideBar } from "../store/UI-slice";
 import { RootState } from "../store";
@@ -16,6 +16,7 @@ function SideBar() {
   const isSidebarOpen = useSelector(
     (state: RootState) => state.ui.isSidebarOpen
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSidebarOpen) {
@@ -60,7 +61,11 @@ function SideBar() {
             </button>
           </div>
 
-          <Button buttonType="outline" className="w-[50%]">
+          <Button
+            buttonType="outline"
+            className="w-[50%]"
+            onClick={() => navigate("/create-character")}
+          >
             <FaPlus />
             Create
           </Button>
