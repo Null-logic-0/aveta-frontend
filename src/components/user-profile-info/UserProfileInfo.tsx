@@ -6,9 +6,16 @@ import { FaRegEdit } from "react-icons/fa";
 type UserProfileProps = {
   userName: string;
   image: string;
+  onOpenSettings: () => void;
+  isCurrentUser: boolean;
 };
 
-function UserProfileInfo({ userName, image }: UserProfileProps) {
+function UserProfileInfo({
+  userName,
+  image,
+  isCurrentUser,
+  onOpenSettings,
+}: UserProfileProps) {
   return (
     <div className="flex flex-col gap-2 items-center">
       <RoundedImage
@@ -17,10 +24,12 @@ function UserProfileInfo({ userName, image }: UserProfileProps) {
         className="w-[124px] h-[124px]"
       />
       <p className="font-semibold text-lg">{userName}</p>
-      <Button buttonType="outline">
-        <FaRegEdit />
-        Settings
-      </Button>
+      {isCurrentUser && (
+        <Button buttonType="outline" onClick={onOpenSettings}>
+          <FaRegEdit />
+          Settings
+        </Button>
+      )}
     </div>
   );
 }

@@ -10,6 +10,7 @@ import {
   GoogleLoginResponse,
   SignInRequest,
   SingUpRequest,
+  UpdatePasswordInterface,
 } from "../interfaces/auth-api.interface";
 import { GetMeResponse } from "../interfaces/current-user-response.interface";
 import { assertTokenExists } from "./assert-token";
@@ -19,6 +20,7 @@ import {
   SubmitCharacterOptions,
 } from "../interfaces/character.interface";
 import { ErrorResponse } from "../interfaces/error-response.interface";
+import { UpdateUserProfileInterface } from "../interfaces/user-profile.interface";
 
 // Authentication
 async function auth<Req, Res>(params: AuthParams<Req>): Promise<Res> {
@@ -132,6 +134,36 @@ export async function changePassword(data: ChangePassword, token: string) {
   }
 }
 
+export async function updatePassword(
+  token: string,
+  data: UpdatePasswordInterface
+) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.patch(`${URL}/auth/update-password`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+
+    return response.data;
+  } catch (err: unknown) {
+    if (isAxiosError(err)) {
+      if (err.response?.status === 400) {
+        throw buildValidationError("Validation failed", 400, err.response.data);
+      }
+      throw buildApiError(
+        `Failed to update password`,
+        500,
+        err.response?.data || err
+      );
+    }
+    throw err;
+  }
+}
+
 // Users
 
 export async function getMe(token: string): Promise<GetMeResponse> {
@@ -212,6 +244,47 @@ export async function getUserLikedCharacters(
     return response.data;
   } catch (err) {
     throw buildApiError("Failed to get liked characters by user!", 500, err);
+  }
+}
+
+// Account
+export async function updateProfile(
+  token: string,
+  data: UpdateUserProfileInterface
+) {
+  assertTokenExists(token);
+  const formData = new FormData();
+  formData.append("userName", data.userName);
+  formData.append("profileImage", data.profileImage);
+
+  try {
+    const response = await axios.patch(
+      `${URL}/users/me/update-profile`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to update user profile", 500, err);
+  }
+}
+
+export async function deleteAccount(token: string) {
+  assertTokenExists(token);
+  try {
+    return await axios.delete(`${URL}/users/me/delete-account`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+  } catch (err) {
+    throw buildApiError("Failed to delete account", 500, err);
   }
 }
 

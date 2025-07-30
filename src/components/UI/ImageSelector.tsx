@@ -1,7 +1,7 @@
 import AvatarSuggestions from "../AvatarSuggestions";
 import Button from "./Button";
 import ImagePicker from "./ImagePicker";
-import Modal from "./Modal/Modal";
+import Modal from "./modal/Modal";
 
 type ImageSelectorProps = {
   onClose: () => void;

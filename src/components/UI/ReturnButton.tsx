@@ -5,7 +5,7 @@ function ReturnButton() {
   const navigate = useNavigate();
   return (
     <div className="mb-6 max-md:hidden flex items-center justify-start w-full">
-      <button className="cursor-pointer" onClick={() => navigate("/")}>
+      <button className="cursor-pointer" onClick={() => navigate(-1)}>
         <RiArrowGoBackFill className="text-xl" />
       </button>
     </div>
