@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import HomeHeader from "../components/HomeHeader";
 import CharactersList from "../components/characters/CharactersList";
-import Tabs from "../components/characters/TabFilter/Tabs";
+import Tabs from "../components/characters/tab-filter/Tabs";
 import Pagination from "../components/UI/Pagination";
 import { useLocation } from "react-router";
 

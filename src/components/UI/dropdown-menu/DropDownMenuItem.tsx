@@ -19,6 +19,7 @@ function DropDownMenuItem({
   className,
 }: UserProfileMenuItemProps) {
   const navigate = useNavigate();
+
   function handleOperation() {
     if (link) {
       navigate(link);

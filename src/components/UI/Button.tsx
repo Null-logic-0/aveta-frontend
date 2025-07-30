@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import SpinnerMini from "./SpinnerMini/SpinnerMini";
+import SpinnerMini from "./spinner-mini/SpinnerMini";
 
 type ButtonProps = {
   children: React.ReactNode;

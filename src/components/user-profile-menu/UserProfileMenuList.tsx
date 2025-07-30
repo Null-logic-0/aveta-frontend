@@ -3,9 +3,12 @@ import { FaUser } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
-import DropDownMenu from "../UI/DropDownMenu/DropDownMenu";
-import DropDownMenuItem from "../UI/DropDownMenu/DropDownMenuItem";
+import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
+import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 import clsx from "clsx";
+import { useDispatch } from "react-redux";
+import { open } from "../../store/UI-slice";
+import { useAuth } from "../../hooks/useAuth";
 
 type UserProfileMenuListProps = {
   openMenu: boolean;
@@ -20,6 +23,9 @@ function UserProfileMenuList({
   onClose,
 }: UserProfileMenuListProps) {
   const { mutate, isPending } = useSignOut();
+  const { data } = useAuth();
+  const user = data?.data?.data;
+  const dispatch = useDispatch();
 
   return (
     <DropDownMenu
@@ -44,10 +50,17 @@ function UserProfileMenuList({
           <MdAdminPanelSettings className="text-xl" />
         </DropDownMenuItem>
       )}
-      <DropDownMenuItem disabled={isPending} onClose={onClose}>
+      <DropDownMenuItem
+        disabled={isPending}
+        operation={() => {
+          dispatch(open(user?.id));
+        }}
+        onClose={onClose}
+      >
         Settings
         <IoSettingsSharp />
       </DropDownMenuItem>
+
       <DropDownMenuItem
         operation={() => mutate()}
         disabled={isPending}

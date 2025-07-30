@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import CardWrapper from "../UI/CardWrapper";
 import CharacterStats from "./CharacterStats";
 import CharacterMenuList from "./CharacterMenuList";
+import { Link } from "react-router";
 
 type CharacterDetailProps = {
   characterId: number;
@@ -41,7 +42,11 @@ function CharacterDetailCard({
           <div>
             <p className="font-semibold text-lg">{characterName}</p>
 
-            <p className=" text-sm">By {creator}</p>
+            <Link to={`/profile/${creatorId}`}>
+              <p className="text-sm hover:underline cursor-pointer">
+                By {creator}
+              </p>
+            </Link>
           </div>
           <CharacterStats likes={likes} />
           <p className="font-medium text-sm opacity-70 border-l-2 pl-2 border-[#8A38F5]">

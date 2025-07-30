@@ -22,7 +22,6 @@ function AvatarChanger({ name, error, uploadedImage }: AvatarChangerProps) {
   );
 
   const handleOpenModal = () => dispatch(open("image-selector"));
-
   const handleOpenAvatarModal = () => dispatch(open("avatar-suggestions"));
 
   const handleSelectImage = (imageUrl: string) =>
@@ -42,10 +41,10 @@ function AvatarChanger({ name, error, uploadedImage }: AvatarChangerProps) {
         />
         <button
           onClick={handleOpenModal}
-          className="cursor-pointer rounded-full bg-[#18181b] p-2 absolute bottom-0 left-16"
+          className="cursor-pointer rounded-full bg-[#18181b] z-50 p-2 absolute bottom-0 left-16"
           type="button"
         >
-          <FaRegEdit />
+          <FaRegEdit className="text-white" />
         </button>
       </div>
       {error && <p className="text-sm text-[#E50000] font-medium">{error}</p>}

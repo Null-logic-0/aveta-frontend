@@ -4,7 +4,6 @@ import SignIn from "../../pages/sign-in";
 import SignUp from "../../pages/sign-up";
 import Home from "../../pages/home";
 import ForgotPassword from "../../pages/forgot-password";
-import Success from "../../pages/Success";
 import ChangePassword from "../../pages/change-password";
 import RootLayout from "../../pages/root";
 import ProtectRoutes from "../guards/ProtectRoutes";
@@ -13,6 +12,7 @@ import CharacterDetails from "../../pages/character-details";
 import UserProfile from "../../pages/user-profile";
 import CreateCharacter from "../../pages/create-character";
 import UpdateCharacter from "../../pages/update-character";
+import SuccessMessage from "../../pages/success-message";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/success",
-        element: <Success />,
+        element: <SuccessMessage />,
       },
       {
         path: "/reset-password",
@@ -58,6 +58,11 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/profile/:userId",
+        element: <UserProfile />,
+      },
+
+      {
         path: "/create-character",
         element: <CreateCharacter />,
       },
@@ -68,10 +73,6 @@ export const router = createBrowserRouter([
       {
         path: "/:characterId",
         element: <CharacterDetails />,
-      },
-      {
-        path: "/profile/:userId",
-        element: <UserProfile />,
       },
     ],
   },

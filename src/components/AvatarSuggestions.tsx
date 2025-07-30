@@ -7,12 +7,12 @@ type AvatarSuggestionsProps = {
   onSelect: (value: string) => void;
 };
 function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
-  const { data, isLoading, isError, error } = useFetchEntityImages({
+  const { data, isPending, isError, error } = useFetchEntityImages({
     type: EntityImageType.AVATAR,
   });
   const images = data?.data;
 
-  if (isError && !isLoading) {
+  if (isError && !isPending) {
     return (
       <p className="text-[#E50000] text-center text-sm font-semibold">
         {error?.message || "Failed to fetch avatars"}
@@ -26,9 +26,9 @@ function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
         <p className="text-white/70 font-bold text-sm">Try an example</p>
         <button
           onClick={onOpen}
-          disabled={isLoading}
+          disabled={isPending}
           className={`text-white opacity-70 ${
-            isLoading
+            isPending
               ? "cursor-not-allowed "
               : "cursor-pointer hover:opacity-100 hover:underline"
           }  font-bold text-sm `}
@@ -37,7 +37,7 @@ function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
         </button>
       </div>
       <div className="flex items-center justify-around">
-        {isLoading && !isError ? (
+        {isPending && !isError ? (
           <>
             {Array(8)
               .fill(0)
@@ -50,7 +50,7 @@ function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
           </>
         ) : (
           <>
-            {!isLoading &&
+            {!isPending &&
               !isError &&
               images
                 ?.slice(0, 8)
@@ -65,7 +65,7 @@ function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
                 ))}
           </>
         )}
-        {!isLoading && !isError && images?.length === 0 && (
+        {!isPending && !isError && images?.length === 0 && (
           <p className="text-sm text-white/70 ">No Images</p>
         )}
       </div>

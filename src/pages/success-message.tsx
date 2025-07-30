@@ -1,8 +1,8 @@
+import { Link } from "react-router";
 import Heading from "../components/UI/Heading";
 import Icon from "../assets/received.png";
-import { Link } from "react-router";
 
-function Success() {
+function SuccessMessage() {
   return (
     <main className="h-screen flex justify-center items-center p-4">
       <div className="flex items-center flex-col gap-4 bg-[#11141D] border border-[#3B3A3F] p-6  max-w-[462px] w-full rounded-xl">
@@ -31,4 +31,4 @@ function Success() {
   );
 }
 
-export default Success;
+export default SuccessMessage;

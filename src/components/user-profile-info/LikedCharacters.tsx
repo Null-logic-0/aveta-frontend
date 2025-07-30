@@ -1,22 +1,21 @@
 import { Empty } from "antd";
 import { useState } from "react";
-import { useFetchUserCharacters } from "../../hooks/useFetchUserCharacters";
+import { useLikedCharacters } from "../../hooks/useLikedCharacters";
 import CharactersList from "../characters/CharactersList";
 import Pagination from "../UI/Pagination";
-import Spinner from "../UI/Spinner/Spinner";
+import Spinner from "../UI/spinner/Spinner";
 
-function CreatedCharacters({ id }: { id?: number }) {
+function LikedCharacters({ id }: { id?: number }) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading } = useFetchUserCharacters({
+  const { data: likedCharactersData, isLoading } = useLikedCharacters({
     id,
     limit: 6,
     page: currentPage,
   });
 
-  const characters = data?.data?.data;
-
-  const pagination = data?.data;
+  const characters = likedCharactersData?.data?.data;
+  const pagination = likedCharactersData?.data;
 
   if (characters?.length === 0 && !isLoading) {
     return (
@@ -48,4 +47,4 @@ function CreatedCharacters({ id }: { id?: number }) {
   );
 }
 
-export default CreatedCharacters;
+export default LikedCharacters;

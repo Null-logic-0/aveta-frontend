@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/aside-menu/SideBar";
 
 import BurgerMenuButton from "../components/UI/BurgerMenuButton";
 import UserPlanIndicator from "../components/UI/UserPlanIndicator";

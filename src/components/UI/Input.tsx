@@ -38,7 +38,7 @@ function Input({
     : type || "text";
 
   const mergedClass = twMerge(
-    `w-full border ${
+    `w-full border  ${
       error ? "border-[#E50000]" : "border-[#3B3A3F]"
     }  font-medium text-sm rounded-[6px] resize-none ${
       hasIcon ? "pl-[42px]" : "px-3"
@@ -49,7 +49,7 @@ function Input({
   return (
     <div className="flex flex-col gap-2">
       {isLabel && (
-        <label htmlFor={inputId} className="font-semibold text-sm">
+        <label htmlFor={inputId} className="font-semibold text-white text-sm">
           {label}
         </label>
       )}

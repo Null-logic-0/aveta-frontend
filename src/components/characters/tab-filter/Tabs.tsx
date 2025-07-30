@@ -1,6 +1,6 @@
+import { useSearchParams } from "react-router";
 import { characterTags } from "../../../constants/tags.constants";
 import Tab from "./Tab";
-import { useSearchParams } from "react-router";
 
 function Tabs() {
   const [searchParams, setSearchParams] = useSearchParams();

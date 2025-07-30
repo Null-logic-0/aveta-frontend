@@ -8,7 +8,7 @@ import CharacterListItem from "../components/characters/CharacterListItem";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import { CharacterInterface } from "../interfaces/character.interface";
 import ReturnButton from "../components/UI/ReturnButton";
-import Spinner from "../components/UI/Spinner/Spinner";
+import Spinner from "../components/UI/spinner/Spinner";
 import { toNumericId } from "../helpers/toNumericId";
 import { useAuth } from "../hooks/useAuth";
 

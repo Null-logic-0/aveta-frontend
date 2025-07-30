@@ -9,8 +9,8 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { RxDotsHorizontal } from "react-icons/rx";
 
-import DropDownMenu from "../UI/DropDownMenu/DropDownMenu";
-import DropDownMenuItem from "../UI/DropDownMenu/DropDownMenuItem";
+import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
+import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 
 type CharacterMenuList = {
   characterId: number;

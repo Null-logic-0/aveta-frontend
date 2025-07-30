@@ -6,7 +6,7 @@ import { getAllEntityImages } from "../util/http";
 export function useFetchEntityImages({ type }: { type: EntityImageType }) {
   const { token } = useAuth();
 
-  const { data, isError, error, isLoading } = useQuery({
+  const { data, isError, error, isPending } = useQuery({
     queryKey: ["entity-images", type],
     queryFn: () => {
       if (!token) throw new Error("Invalid credentials!");
@@ -15,5 +15,5 @@ export function useFetchEntityImages({ type }: { type: EntityImageType }) {
     retry: false,
     enabled: !!type || !!token,
   });
-  return { data, isError, error, isLoading };
+  return { data, isError, error, isPending };
 }

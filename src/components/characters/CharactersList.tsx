@@ -1,6 +1,6 @@
 import { Empty } from "antd";
 import { CharacterInterface } from "../../interfaces/character.interface";
-import Spinner from "../UI/Spinner/Spinner";
+import Spinner from "../UI/spinner/Spinner";
 import CharacterCard from "./CharacterCard";
 
 type CharactersListProps = {
