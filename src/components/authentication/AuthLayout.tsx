@@ -11,7 +11,7 @@ function AuthLayout({ children, className }: AuthLayoutProps) {
   return (
     <main
       className={twMerge(
-        "flex max-lg:flex-col items-center gap-4 justify-center lg:h-screen  p-4",
+        "flex max-lg:flex-col items-center gap-4 justify-center lg:h-screen max-md:p-2  p-4",
         className
       )}
     >

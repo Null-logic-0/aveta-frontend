@@ -5,6 +5,7 @@ import CharactersList from "../components/characters/CharactersList";
 import Tabs from "../components/characters/tab-filter/Tabs";
 import Pagination from "../components/UI/Pagination";
 import { useLocation } from "react-router";
+import UserPlanIndicator from "../components/UI/UserPlanIndicator";
 
 function Home() {
   const location = useLocation();
@@ -24,8 +25,9 @@ function Home() {
   const pagination = data?.data;
 
   return (
-    <div className="max-w-[1100px] xl:h-screen flex flex-col items-center justify-center">
+    <div className="max-w-[1100px] xl:h-screen flex  flex-col items-center justify-center">
       <HomeHeader />
+      <UserPlanIndicator />
 
       <div className="flex max-lg:items-center flex-col gap-6 mt-6">
         <h2 className="text-2xl font-bold">Browse Characters</h2>

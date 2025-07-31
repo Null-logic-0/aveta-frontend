@@ -48,7 +48,7 @@ function Settings() {
               >
                 Profile
               </SettingsMenuItem>
-              {user.googleId === null && (
+              {user.googleId !== null && (
                 <SettingsMenuItem
                   navigate={() => handleNavigate("update-password")}
                   isActive={navigate === "update-password"}
