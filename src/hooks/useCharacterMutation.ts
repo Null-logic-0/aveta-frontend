@@ -61,6 +61,8 @@ export function useCharacterMutation({
       queryClient.invalidateQueries({ queryKey: ["characters"] });
       queryClient.invalidateQueries({ queryKey: ["liked-characters"] });
       queryClient.invalidateQueries({ queryKey: ["user-characters"] });
+      queryClient.invalidateQueries({ queryKey: ["chats"] });
+      queryClient.invalidateQueries({ queryKey: ["chat"] });
       dispatch(clearSelectedImage());
       await navigate(`/profile/${user?.id}`);
     },

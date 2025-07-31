@@ -13,6 +13,8 @@ import UserProfile from "../../pages/user-profile";
 import CreateCharacter from "../../pages/create-character";
 import UpdateCharacter from "../../pages/update-character";
 import SuccessMessage from "../../pages/success-message";
+import Chat from "../../pages/chat";
+import ChatRootLayout from "../../pages/chat-root";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +63,6 @@ export const router = createBrowserRouter([
         path: "/profile/:userId",
         element: <UserProfile />,
       },
-
       {
         path: "/create-character",
         element: <CreateCharacter />,
@@ -71,8 +72,22 @@ export const router = createBrowserRouter([
         element: <UpdateCharacter />,
       },
       {
-        path: "/:characterId",
+        path: "/character/:characterId",
         element: <CharacterDetails />,
+      },
+    ],
+  },
+  {
+    path: "/chat/:chatId",
+    element: (
+      <ProtectRoutes>
+        <ChatRootLayout />
+      </ProtectRoutes>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Chat />,
       },
     ],
   },

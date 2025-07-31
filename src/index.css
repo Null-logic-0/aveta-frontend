@@ -10,6 +10,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 @layer components {
   dialog::backdrop {
     @apply fixed top-0 left-0 h-screen w-screen bg-black/50;

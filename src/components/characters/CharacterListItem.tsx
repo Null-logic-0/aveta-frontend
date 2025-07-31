@@ -1,4 +1,5 @@
 import RoundedImage from "../UI/RoundedImage";
+
 type CharacterListItemProps = {
   image: string;
   characterName: string;
@@ -11,7 +12,7 @@ function CharacterListItem({
 }: CharacterListItemProps) {
   return (
     <div
-      className={`flex w-full items-center justify-start p-2 gap-[6px] rounded-[6px] ${
+      className={`flex w-full items-center  gap-[6px]  justify-start p-2  rounded-[6px] ${
         isActive && "bg-[#1E1E25]/50"
       } hover:bg-[#1E1E25]/50`}
     >

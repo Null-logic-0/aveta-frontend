@@ -21,6 +21,10 @@ import {
 } from "../interfaces/character.interface";
 import { ErrorResponse } from "../interfaces/error-response.interface";
 import { UpdateUserProfileInterface } from "../interfaces/user-profile.interface";
+import {
+  SendMessageInterface,
+  UpdateChatThemeInterface,
+} from "../interfaces/chat.interface";
 
 // Authentication
 async function auth<Req, Res>(params: AuthParams<Req>): Promise<Res> {
@@ -222,6 +226,45 @@ export async function getUserCreatedCharacters(
   }
 }
 
+export async function toggleLikeCharacter(token: string, characterId: number) {
+  assertTokenExists(token);
+  try {
+    return await axios.post(
+      `${URL}/users/like-character/${characterId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+  } catch (err) {
+    throw buildApiError("Failed to like/unlike character!", 500, err);
+  }
+}
+
+export async function getLikedCharacterByUser(
+  token: string,
+  characterId: number
+) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(
+      `${URL}/users/like-character/${characterId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch liked character!", 500, err);
+  }
+}
+
 export async function getUserLikedCharacters(
   token: string,
   id?: number,
@@ -417,6 +460,133 @@ export async function getOneCharacter(token: string, id: number) {
     return response;
   } catch (err) {
     throw buildApiError("Failed to fetch single character!", 500, err);
+  }
+}
+
+// Chat
+
+export async function createChat(token: string, characterId: number) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.post(
+      `${URL}/chats/${characterId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to create chat!", 500, err);
+  }
+}
+
+export async function getAllChats(token: string) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(`${URL}/chats`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch chats!", 500, err);
+  }
+}
+
+export async function getSingleChat(token: string, chatId: number) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(`${URL}/chats/${chatId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch single chat!", 500, err);
+  }
+}
+
+export async function deleteChat(token: string, chatId: number) {
+  assertTokenExists(token);
+  try {
+    return await axios.delete(`${URL}/chats/${chatId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+  } catch (err) {
+    throw buildApiError("Failed to delete chat!", 500, err);
+  }
+}
+
+export async function updateChatTheme(
+  token: string,
+  chatId: number,
+  data: UpdateChatThemeInterface
+) {
+  assertTokenExists(token);
+
+  try {
+    const response = await axios.patch(`${URL}/chats/${chatId}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to update chat theme!", 500, err);
+  }
+}
+
+// Send Message
+
+export async function sendMessage(
+  token: string,
+  chatId: number,
+  data: SendMessageInterface
+) {
+  assertTokenExists(token);
+  const formData = new FormData();
+  formData.append("content", data.content);
+  try {
+    const response = await axios.post(`${URL}/messages/${chatId}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to send message!", 500, err);
+  }
+}
+
+// Fetch Messages
+
+export async function fetchChatMessages(token: string, chatId: number) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(`${URL}/messages/${chatId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch messages!", 500, err);
   }
 }
 

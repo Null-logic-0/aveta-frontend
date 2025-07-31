@@ -1,16 +1,17 @@
 import { Empty } from "antd";
+import { useAuth } from "../hooks/useAuth";
 import { Link, useParams } from "react-router";
+import { toNumericId } from "../helpers/toNumericId";
 import { useFetchCharacter } from "../hooks/useFetchCharacter";
-import CharacterDetailCard from "../components/characters/CharacterDetailCard";
-import CardWrapper from "../components/UI/CardWrapper";
-import Tags from "../components/characters/tags/Tags";
-import CharacterListItem from "../components/characters/CharacterListItem";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import { CharacterInterface } from "../interfaces/character.interface";
-import ReturnButton from "../components/UI/ReturnButton";
+
+import Tags from "../components/characters/tags/Tags";
+import CardWrapper from "../components/UI/CardWrapper";
 import Spinner from "../components/UI/spinner/Spinner";
-import { toNumericId } from "../helpers/toNumericId";
-import { useAuth } from "../hooks/useAuth";
+import ReturnButton from "../components/UI/ReturnButton";
+import CharacterListItem from "../components/characters/CharacterListItem";
+import CharacterDetailCard from "../components/characters/CharacterDetailCard";
 
 function CharacterDetails() {
   const { characterId } = useParams();
