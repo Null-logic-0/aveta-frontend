@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "react-router";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import HomeHeader from "../components/HomeHeader";
-import CharactersList from "../components/characters/CharactersList";
 import Tabs from "../components/characters/tab-filter/Tabs";
 import Pagination from "../components/UI/Pagination";
-import { useLocation } from "react-router";
 import UserPlanIndicator from "../components/UI/UserPlanIndicator";
+import CharactersList from "../components/characters/CharactersList";
 
 function Home() {
   const location = useLocation();
@@ -13,12 +13,17 @@ function Home() {
   const queryParams = Object.fromEntries(
     new URLSearchParams(location.search).entries()
   );
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(Number(queryParams.page) || 1);
+
+  const [search, setSearch] = useState(queryParams.search || "");
+
+  const { search: _, ...restParams } = queryParams;
 
   const { data, isLoading } = useFetchAllCharacters({
+    ...restParams,
     limit: 6,
     page: currentPage,
-    ...queryParams,
+    search,
   });
 
   const characters = data?.data?.data;
@@ -26,7 +31,12 @@ function Home() {
 
   return (
     <div className="max-w-[1100px] xl:h-screen flex  flex-col items-center justify-center">
-      <HomeHeader />
+      <HomeHeader
+        onSearch={(value) => {
+          setCurrentPage(1);
+          setSearch(value);
+        }}
+      />
       <UserPlanIndicator />
 
       <div className="flex max-lg:items-center flex-col gap-6 mt-6">
