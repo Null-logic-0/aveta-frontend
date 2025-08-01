@@ -13,42 +13,6 @@ function CreateCharacter() {
     (state: RootState) => state.ui.selectedImage
   );
 
-  // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  //   event.preventDefault();
-
-  //   const formData = new FormData(event.currentTarget);
-  //   const file = formData.get("avatar") as File;
-
-  //   let avatar: File | string | undefined;
-
-  //   if (file && file.size > 0) {
-  //     avatar = file;
-  //   } else if (
-  //     selectedImage &&
-  //     selectedImage.startsWith("data:image/") &&
-  //     selectedImage.includes("base64")
-  //   ) {
-  //     avatar = base64ToFile(selectedImage, "avatar.jpg") || undefined;
-  //   } else if (
-  //     typeof selectedImage === "string" &&
-  //     selectedImage.startsWith("http")
-  //   ) {
-  //     avatar = selectedImage;
-  //   }
-
-  //   const data = {
-  //     characterName: formData.get("characterName") as string,
-  //     tagline: formData.get("tagline") as string,
-  //     description: formData.get("description") as string,
-  //     tags: formData.getAll("tags") as string[],
-  //     greeting: formData.get("greeting") as string,
-  //     visibility: formData.get("visibility") as Visibility,
-  //     avatar,
-  //   };
-
-  //   mutate(data);
-  // }
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);

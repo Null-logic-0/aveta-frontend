@@ -1,12 +1,12 @@
-import { useEffect, useRef } from "react";
 import toast from "react-hot-toast";
+import { useEffect, useRef } from "react";
 
 import ChatLoader from "./ChatLoader";
 import ChatMessageItem from "./ChatMessageItem";
 
+import TypeLoader from "../UI/TypeLoader";
 import { ChatInterface } from "../../interfaces/chat.interface";
 import { useFetchChatMessages } from "../../hooks/useFetchChatMessages";
-import TypeLoader from "../UI/TypeLoader";
 
 type ChatMessagesProps = {
   name: string;

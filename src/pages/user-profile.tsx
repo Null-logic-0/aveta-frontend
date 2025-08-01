@@ -1,17 +1,18 @@
-import { Empty } from "antd";
-import { useParams } from "react-router";
 import { useState } from "react";
+import { open } from "../store/UI-slice";
+import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import { useAuth } from "../hooks/useAuth";
 import { toNumericId } from "../helpers/toNumericId";
 import { useFetchUser } from "../hooks/useFetchUser";
+
+import Empty from "../components/UI/Empty";
 import Spinner from "../components/UI/spinner/Spinner";
+import ReturnButton from "../components/UI/ReturnButton";
 import UserProfileInfo from "../components/user-profile-info/UserProfileInfo";
 import UserProfileTabs from "../components/user-profile-info/UserProfileTabs";
-import CreatedCharacters from "../components/user-profile-info/CreatedCharacters";
 import LikedCharacters from "../components/user-profile-info/LikedCharacters";
-import ReturnButton from "../components/UI/ReturnButton";
-import { useAuth } from "../hooks/useAuth";
-import { useDispatch } from "react-redux";
-import { open } from "../store/UI-slice";
+import CreatedCharacters from "../components/user-profile-info/CreatedCharacters";
 
 function UserProfile() {
   const { userId } = useParams();

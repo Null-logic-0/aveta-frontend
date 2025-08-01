@@ -1,7 +1,7 @@
-import { Empty } from "antd";
-import { CharacterInterface } from "../../interfaces/character.interface";
+import Empty from "../UI/Empty";
 import Spinner from "../UI/spinner/Spinner";
 import CharacterCard from "./CharacterCard";
+import { CharacterInterface } from "../../interfaces/character.interface";
 
 type CharactersListProps = {
   characters: [];
@@ -17,11 +17,7 @@ function CharactersList({ characters, isLoading }: CharactersListProps) {
   }
 
   if (!isLoading && characters.length === 0) {
-    return (
-      <div className="w-full flex flex-col items-center justify-center mt-6">
-        <Empty description="No characters found" />
-      </div>
-    );
+    return <Empty description="Characters not found!" />;
   }
 
   return (

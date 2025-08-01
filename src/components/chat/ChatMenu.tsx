@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { useEffect, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 import { close, open } from "../../store/UI-slice";
 import { RxDotsHorizontal } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
 import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
-import { twMerge } from "tailwind-merge";
 
 type ChatProps = {
   activeValue: number | string;

@@ -1,12 +1,13 @@
 import { NavLink } from "react-router";
-import defaultProfile from "../../assets/default.jpg";
-import CharacterListItem from "../characters/CharacterListItem";
-import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { close } from "../../store/UI-slice";
-import ChatMenu from "./ChatMenu";
 import { useDeleteChat } from "../../hooks/useDeleteChat";
+
+import ChatMenu from "./ChatMenu";
+import defaultProfile from "../../assets/default.jpg";
+import CharacterListItem from "../characters/CharacterListItem";
+import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 
 type ChatCharacterProps = {
   link: string;

@@ -1,4 +1,4 @@
-import { Empty } from "antd";
+import Empty from "../UI/Empty";
 import { useState } from "react";
 import { useLikedCharacters } from "../../hooks/useLikedCharacters";
 import CharactersList from "../characters/CharactersList";

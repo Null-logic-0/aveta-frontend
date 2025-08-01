@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router";
+import ChatLoader from "./ChatLoader";
 import RoundedImage from "../UI/RoundedImage";
 import ChatActionsBar from "./ChatActionsBar";
+
 import defaultImage from "../../assets/default.jpg";
 import { MdOutlineArrowBackIos } from "react-icons/md";
-import ChatLoader from "./ChatLoader";
 
 type ChatHeaderProps = {
   characterImage: string;

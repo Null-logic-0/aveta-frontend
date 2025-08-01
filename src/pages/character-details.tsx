@@ -1,4 +1,3 @@
-import { Empty } from "antd";
 import { useAuth } from "../hooks/useAuth";
 import { Link, useParams } from "react-router";
 import { toNumericId } from "../helpers/toNumericId";
@@ -6,6 +5,7 @@ import { useFetchCharacter } from "../hooks/useFetchCharacter";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
 import { CharacterInterface } from "../interfaces/character.interface";
 
+import Empty from "../components/UI/Empty";
 import Tags from "../components/characters/tags/Tags";
 import CardWrapper from "../components/UI/CardWrapper";
 import Spinner from "../components/UI/spinner/Spinner";
