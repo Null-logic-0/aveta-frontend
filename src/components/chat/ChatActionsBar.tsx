@@ -15,7 +15,6 @@ import { useFetchLikedCharacterByUser } from "../../hooks/useFetchLikedCharacter
 import ThemeSuggestionsModal from "./ThemeSuggestionsModal";
 import { useState } from "react";
 import { useUpdateChatTheme } from "../../hooks/useUpdateChatTheme";
-import { useNavigate } from "react-router";
 
 type ChatActionBarProps = {
   characterId: number;
@@ -41,8 +40,6 @@ function ChatActionsBar({
   const isLiked = data?.data.liked;
 
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const handleClose = () => dispatch(close());
 
@@ -78,10 +75,7 @@ function ChatActionsBar({
           </DropDownMenuItem>
           <DropDownMenuItem
             onClose={handleClose}
-            operation={() => {
-              deleteChat();
-              navigate("/");
-            }}
+            operation={() => deleteChat()}
             className="text-red-600"
           >
             Delete chat <MdDeleteOutline className="text-xl" />
