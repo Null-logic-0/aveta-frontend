@@ -2,7 +2,6 @@ import { useSignOut } from "../../hooks/useSignOut";
 import { FaUser } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
-import { MdAdminPanelSettings } from "react-icons/md";
 import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
 import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 import clsx from "clsx";
@@ -19,7 +18,6 @@ type UserProfileMenuListProps = {
 function UserProfileMenuList({
   openMenu,
   userId,
-  isAdmin,
   onClose,
 }: UserProfileMenuListProps) {
   const { mutate, isPending } = useSignOut();
@@ -44,12 +42,7 @@ function UserProfileMenuList({
         Profile
         <FaUser />
       </DropDownMenuItem>
-      {isAdmin && (
-        <DropDownMenuItem disabled={isPending} link={`#`} onClose={onClose}>
-          Admin panel
-          <MdAdminPanelSettings className="text-xl" />
-        </DropDownMenuItem>
-      )}
+
       <DropDownMenuItem
         disabled={isPending}
         operation={() => {
