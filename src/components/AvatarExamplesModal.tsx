@@ -19,7 +19,7 @@ function AvatarExamplesModal({
   const { data, isPending, isError, error } = useFetchEntityImages({
     type: EntityImageType.AVATAR,
   });
-  const images = data?.data;
+  const images = data?.data?.data;
 
   return (
     <Modal onClose={onClose}>

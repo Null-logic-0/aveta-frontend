@@ -1,14 +1,12 @@
-import Empty from "../UI/Empty";
 import { useState } from "react";
 import { useFetchUserCharacters } from "../../hooks/useFetchUserCharacters";
 import CharactersList from "../characters/CharactersList";
 import Pagination from "../UI/Pagination";
-import Spinner from "../UI/spinner/Spinner";
 
 function CreatedCharacters({ id }: { id?: number }) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading } = useFetchUserCharacters({
+  const { data, isLoading, isError, error } = useFetchUserCharacters({
     id,
     limit: 6,
     page: currentPage,
@@ -18,26 +16,19 @@ function CreatedCharacters({ id }: { id?: number }) {
 
   const pagination = data?.data;
 
-  if (characters?.length === 0 && !isLoading) {
-    return (
-      <div className="mt-6 flex justify-center items-center">
-        <Empty description="Invalid user ID" />
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="mt-6 flex justify-center items-center">
-        <Spinner />
-      </div>
-    );
-  }
-
   return (
     <>
-      <CharactersList characters={characters} isLoading={isLoading} />
-      {!isLoading && (
+      <CharactersList
+        characters={characters}
+        isLoading={isLoading}
+        isError={isError}
+        errMessage={
+          error instanceof Error
+            ? error.message
+            : "Oops...something went wrong!"
+        }
+      />
+      {!isLoading && !isError && (
         <Pagination
           onPageChange={(page) => setCurrentPage(page)}
           currentPage={currentPage}

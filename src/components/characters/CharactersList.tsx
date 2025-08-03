@@ -2,17 +2,32 @@ import Empty from "../UI/Empty";
 import Spinner from "../UI/spinner/Spinner";
 import CharacterCard from "./CharacterCard";
 import { CharacterInterface } from "../../interfaces/character.interface";
+import AppResult from "../UI/AppResult";
 
 type CharactersListProps = {
-  characters: [];
+  characters: CharacterInterface[];
   isLoading: boolean;
+  isError: boolean;
+  errMessage: string;
 };
-function CharactersList({ characters, isLoading }: CharactersListProps) {
-  if (isLoading) {
+function CharactersList({
+  characters,
+  isLoading,
+  isError,
+  errMessage,
+}: CharactersListProps) {
+  if (isLoading && !isError) {
     return (
-      <li className="flex justify-center items-center w-full mt-6">
+      <div className="flex justify-center items-center w-full mt-6">
         <Spinner />
-      </li>
+      </div>
+    );
+  }
+  if (!isLoading && isError) {
+    return (
+      <div className="flex justify-center items-center w-full mt-6">
+        <AppResult isError={isError} message={errMessage} />
+      </div>
     );
   }
 
@@ -22,7 +37,7 @@ function CharactersList({ characters, isLoading }: CharactersListProps) {
 
   return (
     <ul className="flex gap-4 justify-start max-lg:justify-center items-center flex-wrap">
-      {characters?.map((character: CharacterInterface) => (
+      {characters?.map((character) => (
         <CharacterCard
           key={character.id}
           characterId={character.id}

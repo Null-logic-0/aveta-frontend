@@ -1,14 +1,17 @@
-import Empty from "../UI/Empty";
 import { useState } from "react";
 import { useLikedCharacters } from "../../hooks/useLikedCharacters";
 import CharactersList from "../characters/CharactersList";
 import Pagination from "../UI/Pagination";
-import Spinner from "../UI/spinner/Spinner";
 
 function LikedCharacters({ id }: { id?: number }) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data: likedCharactersData, isLoading } = useLikedCharacters({
+  const {
+    data: likedCharactersData,
+    isLoading,
+    isError,
+    error,
+  } = useLikedCharacters({
     id,
     limit: 6,
     page: currentPage,
@@ -17,26 +20,19 @@ function LikedCharacters({ id }: { id?: number }) {
   const characters = likedCharactersData?.data?.data;
   const pagination = likedCharactersData?.data;
 
-  if (characters?.length === 0 && !isLoading) {
-    return (
-      <div className="mt-6 flex justify-center items-center">
-        <Empty description="Invalid user ID" />
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="mt-6 flex justify-center items-center">
-        <Spinner />
-      </div>
-    );
-  }
-
   return (
     <>
-      <CharactersList characters={characters} isLoading={isLoading} />
-      {!isLoading && (
+      <CharactersList
+        characters={characters}
+        isError={isError}
+        errMessage={
+          error instanceof Error
+            ? error.message
+            : "Oops...something went wrong!"
+        }
+        isLoading={isLoading}
+      />
+      {!isLoading && !isError && (
         <Pagination
           onPageChange={(page) => setCurrentPage(page)}
           currentPage={currentPage}

@@ -10,7 +10,7 @@ function AvatarSuggestions({ onOpen, onSelect }: AvatarSuggestionsProps) {
   const { data, isPending, isError, error } = useFetchEntityImages({
     type: EntityImageType.AVATAR,
   });
-  const images = data?.data;
+  const images = data?.data?.data;
 
   if (isError && !isPending) {
     return (

@@ -6,7 +6,7 @@ export function useFetchAllCharacters(
   filters?: Record<string, string | number | boolean | undefined>
 ) {
   const { token } = useAuth();
-  const { data, isLoading, error, isError } = useQuery({
+  const { data, isPending, error, isError } = useQuery({
     queryKey: ["characters", filters],
     queryFn: () => {
       if (!token) throw new Error("Invalid credentials!");
@@ -16,5 +16,5 @@ export function useFetchAllCharacters(
     enabled: !!token,
   });
 
-  return { data, isError, error, isLoading };
+  return { data, isError, error, isPending };
 }
