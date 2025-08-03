@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
+import Spinner from "../UI/spinner/Spinner";
 
 type ProtectRoutesProps = {
   children: React.ReactNode;
@@ -10,8 +11,16 @@ function ProtectRoutes({
   children,
   redirectIfAuthenticated,
 }: ProtectRoutesProps) {
-  const { token } = useAuth();
+  const { token, isPending } = useAuth();
   const location = useLocation();
+
+  if (token && isPending) {
+    return (
+      <div className="flex justify-center items-center  h-screen">
+        <Spinner />
+      </div>
+    );
+  }
 
   if (redirectIfAuthenticated && token) {
     return <Navigate to="/" replace state={{ from: location }} />;

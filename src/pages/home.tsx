@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router";
 import { useFetchAllCharacters } from "../hooks/useFetchAllCharacters";
+
 import HomeHeader from "../components/HomeHeader";
 import Tabs from "../components/characters/tab-filter/Tabs";
 import Pagination from "../components/UI/Pagination";
@@ -19,7 +20,7 @@ function Home() {
 
   const { search: _, ...restParams } = queryParams;
 
-  const { data, isLoading } = useFetchAllCharacters({
+  const { data, isPending, isError, error } = useFetchAllCharacters({
     ...restParams,
     limit: 6,
     page: currentPage,
@@ -42,9 +43,18 @@ function Home() {
       <div className="flex max-lg:items-center flex-col gap-6 mt-6">
         <h2 className="text-2xl font-bold">Browse Characters</h2>
         <Tabs />
-        <CharactersList characters={characters} isLoading={isLoading} />
+        <CharactersList
+          characters={characters}
+          isLoading={isPending}
+          isError={isError}
+          errMessage={
+            error instanceof Error
+              ? error.message
+              : "Oops...something went wrong!"
+          }
+        />
         <div className="w-full flex justify-end max-lg:justify-center max-w-[1000px]">
-          {!isLoading && (
+          {!isPending && !isError && (
             <Pagination
               onPageChange={(page) => setCurrentPage(page)}
               currentPage={currentPage}

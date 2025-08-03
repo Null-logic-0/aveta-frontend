@@ -1,20 +1,21 @@
 import { createBrowserRouter } from "react-router";
 
+import Chat from "../../pages/chat";
+import Home from "../../pages/home";
 import SignIn from "../../pages/sign-in";
 import SignUp from "../../pages/sign-up";
-import Home from "../../pages/home";
-import ForgotPassword from "../../pages/forgot-password";
-import ChangePassword from "../../pages/change-password";
 import RootLayout from "../../pages/root";
+import ErrorPage from "../../pages/error-page";
 import ProtectRoutes from "../guards/ProtectRoutes";
 import AuthRootLayout from "../../pages/auth-root";
-import CharacterDetails from "../../pages/character-details";
 import UserProfile from "../../pages/user-profile";
+import ChatRootLayout from "../../pages/chat-root";
+import SuccessMessage from "../../pages/success-message";
+import ForgotPassword from "../../pages/forgot-password";
+import ChangePassword from "../../pages/change-password";
 import CreateCharacter from "../../pages/create-character";
 import UpdateCharacter from "../../pages/update-character";
-import SuccessMessage from "../../pages/success-message";
-import Chat from "../../pages/chat";
-import ChatRootLayout from "../../pages/chat-root";
+import CharacterDetails from "../../pages/character-details";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
         <AuthRootLayout />
       </ProtectRoutes>
     ),
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/sign-in",
