@@ -1,11 +1,14 @@
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../UI/Button";
 import { useDispatch } from "react-redux";
-import { open } from "../../store/UI-slice";
+import { close, open } from "../../store/UI-slice";
+import { useNavigate } from "react-router";
 
 function Account() {
   const { data } = useAuth();
   const user = data?.data.data;
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -20,7 +23,15 @@ function Account() {
               {user?.UserPlan.toUpperCase()}
             </p>
           </div>
-          <Button className="text-white w-[30%] ">Upgrade</Button>
+          <Button
+            className="text-white w-[30%]"
+            onClick={() => {
+              navigate("/prices");
+              dispatch(close());
+            }}
+          >
+            Upgrade
+          </Button>
         </div>
         <Button
           onClick={handleOpen}

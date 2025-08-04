@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 
 import Chat from "../../pages/chat";
 import Home from "../../pages/home";
+import Prices from "../../pages/prices";
 import SignIn from "../../pages/sign-in";
 import SignUp from "../../pages/sign-up";
 import RootLayout from "../../pages/root";
@@ -10,12 +11,14 @@ import ProtectRoutes from "../guards/ProtectRoutes";
 import AuthRootLayout from "../../pages/auth-root";
 import UserProfile from "../../pages/user-profile";
 import ChatRootLayout from "../../pages/chat-root";
-import SuccessMessage from "../../pages/success-message";
 import ForgotPassword from "../../pages/forgot-password";
 import ChangePassword from "../../pages/change-password";
 import CreateCharacter from "../../pages/create-character";
 import UpdateCharacter from "../../pages/update-character";
 import CharacterDetails from "../../pages/character-details";
+import EmailSuccessMessage from "../../pages/email-success-message";
+import PaymentSucceed from "../../pages/payment-succeed";
+import PaymentDeclined from "../../pages/payment-declined";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/success",
-        element: <SuccessMessage />,
+        element: <EmailSuccessMessage />,
       },
       {
         path: "/reset-password",
@@ -77,6 +80,10 @@ export const router = createBrowserRouter([
         path: "/character/:characterId",
         element: <CharacterDetails />,
       },
+      {
+        path: "/prices",
+        element: <Prices />,
+      },
     ],
   },
   {
@@ -92,5 +99,13 @@ export const router = createBrowserRouter([
         element: <Chat />,
       },
     ],
+  },
+  {
+    path: "/payment-succeed",
+    element: <PaymentSucceed />,
+  },
+  {
+    path: "/payment-declined",
+    element: <PaymentDeclined />,
   },
 ]);

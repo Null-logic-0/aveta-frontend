@@ -25,6 +25,7 @@ import {
   SendMessageInterface,
   UpdateChatThemeInterface,
 } from "../interfaces/chat.interface";
+import { UserPlan } from "../enums/user-plan.enum";
 
 // Authentication
 async function auth<Req, Res>(params: AuthParams<Req>): Promise<Res> {
@@ -568,8 +569,16 @@ export async function sendMessage(
       withCredentials: true,
     });
     return response.data;
-  } catch (err) {
-    throw buildApiError("Failed to send message!", 500, err);
+  } catch (err: unknown) {
+    if (axios.isAxiosError(err) && err.response) {
+      const backendMessage =
+        err.response.data?.message || "Oops...something went wrong!";
+      throw new Error(backendMessage);
+    } else if (err instanceof Error) {
+      throw new Error(err.message);
+    } else {
+      throw new Error("Oops...something went wrong!");
+    }
   }
 }
 
@@ -606,6 +615,29 @@ export async function getAllEntityImages(token: string, type: EntityImageType) {
     });
     return response.data;
   } catch (err) {
-    throw buildApiError("Failed to fetch avatars!", 500, err);
+    throw buildApiError("Failed to fetch images!", 500, err);
+  }
+}
+
+// Payments
+
+export async function startCheckout(
+  token: string,
+  payload: { plan: UserPlan }
+) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.post(`${URL}/subscription/checkout`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    console.log("Backend checkout response:", response.data);
+
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to start checkout!", 500, err);
   }
 }
