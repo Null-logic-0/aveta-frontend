@@ -31,39 +31,41 @@ function Home() {
   const pagination = data?.data;
 
   return (
-    <div className="max-w-[1100px] xl:h-screen flex  flex-col items-center justify-center">
-      <HomeHeader
-        onSearch={(value) => {
-          setCurrentPage(1);
-          setSearch(value);
-        }}
-      />
+    <>
       <UserPlanIndicator />
-
-      <div className="flex max-lg:items-center flex-col gap-6 mt-6">
-        <h2 className="text-2xl font-bold">Browse Characters</h2>
-        <Tabs />
-        <CharactersList
-          characters={characters}
-          isLoading={isPending}
-          isError={isError}
-          errMessage={
-            error instanceof Error
-              ? error.message
-              : "Oops...something went wrong!"
-          }
+      <div className="xl:h-screen flex mt-4 gap-4  flex-col items-center justify-center">
+        <HomeHeader
+          onSearch={(value) => {
+            setCurrentPage(1);
+            setSearch(value);
+          }}
         />
-        <div className="w-full flex justify-end max-lg:justify-center max-w-[1000px]">
-          {!isPending && !isError && (
-            <Pagination
-              onPageChange={(page) => setCurrentPage(page)}
-              currentPage={currentPage}
-              totalPages={pagination.meta.totalPages}
-            />
-          )}
+
+        <div className="flex max-lg:items-center flex-col gap-4 ">
+          <h2 className="text-2xl font-bold">Browse Categories</h2>
+          <Tabs />
+          <CharactersList
+            characters={characters}
+            isLoading={isPending}
+            isError={isError}
+            errMessage={
+              error instanceof Error
+                ? error.message
+                : "Oops...something went wrong!"
+            }
+          />
+          <div className="w-full flex justify-end max-sm:justify-center">
+            {!isPending && !isError && (
+              <Pagination
+                onPageChange={(page) => setCurrentPage(page)}
+                currentPage={currentPage}
+                totalPages={pagination.meta.totalPages}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

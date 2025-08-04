@@ -46,7 +46,7 @@ function UserProfile() {
     );
   }
   return (
-    <>
+    <div className="flex flex-col w-full items-center">
       <ReturnButton />
       <div className="flex flex-col items-center gap-6 mt-6">
         <UserProfileInfo
@@ -62,7 +62,7 @@ function UserProfile() {
           <LikedCharacters id={numericId} />
         )}
       </div>
-    </>
+    </div>
   );
 }
 

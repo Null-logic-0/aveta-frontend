@@ -14,10 +14,12 @@ type ChatCharacterProps = {
   characterImage: string;
   characterName: string;
   chatId: number;
+  onClick?: () => void;
 };
 function ChatCharacter({
   link,
   characterImage,
+  onClick,
   chatId,
   characterName,
 }: ChatCharacterProps) {
@@ -27,7 +29,7 @@ function ChatCharacter({
 
   return (
     <li className="flex items-center  w-full">
-      <NavLink to={link} className="w-full">
+      <NavLink to={link} className="w-full" onClick={onClick}>
         {({ isActive }) => (
           <CharacterListItem
             characterName={characterName}

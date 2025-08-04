@@ -1,13 +1,15 @@
-import { useSignOut } from "../../hooks/useSignOut";
-import { FaUser } from "react-icons/fa";
-import { CgLogOut } from "react-icons/cg";
-import { IoSettingsSharp } from "react-icons/io5";
-import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
-import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/UI-slice";
 import { useAuth } from "../../hooks/useAuth";
+
+import { FaUser } from "react-icons/fa";
+import { CgLogOut } from "react-icons/cg";
+import { IoSettingsSharp } from "react-icons/io5";
+
+import { useSignOut } from "../../hooks/useSignOut";
+import DropDownMenu from "../UI/dropdown-menu/DropDownMenu";
+import DropDownMenuItem from "../UI/dropdown-menu/DropDownMenuItem";
 
 type UserProfileMenuListProps = {
   openMenu: boolean;
@@ -45,9 +47,7 @@ function UserProfileMenuList({
 
       <DropDownMenuItem
         disabled={isPending}
-        operation={() => {
-          dispatch(open(user?.id));
-        }}
+        operation={() => dispatch(open(user?.id))}
         onClose={onClose}
       >
         Settings

@@ -28,13 +28,15 @@ function CreatedCharacters({ id }: { id?: number }) {
             : "Oops...something went wrong!"
         }
       />
-      {!isLoading && !isError && (
-        <Pagination
-          onPageChange={(page) => setCurrentPage(page)}
-          currentPage={currentPage}
-          totalPages={pagination?.meta.totalPages}
-        />
-      )}
+      <div className="w-full flex justify-end max-sm:justify-center">
+        {!isLoading && !isError && !characters && (
+          <Pagination
+            onPageChange={(page) => setCurrentPage(page)}
+            currentPage={currentPage}
+            totalPages={pagination?.meta.totalPages}
+          />
+        )}
+      </div>
     </>
   );
 }

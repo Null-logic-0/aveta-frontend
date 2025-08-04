@@ -37,7 +37,7 @@ function CharacterForm({
 
   return (
     <form
-      className="flex flex-col gap-4 max-w-[660px] w-full max-md:mt-6"
+      className="flex flex-col gap-4 max-w-[660px] w-full mt-6"
       onSubmit={onSubmit}
     >
       <AvatarChanger
@@ -107,7 +107,7 @@ function CharacterForm({
         label="Visibility"
         name="visibility"
         options={visibilityOptions}
-        className="w-[14%] max-md:w-[50%]"
+        className="w-[14%] max-lg:w-[18%] max-md:w-[50%]"
       />
       <div className="flex items-center max-md:justify-center gap-4 justify-end  w-full">
         <Button

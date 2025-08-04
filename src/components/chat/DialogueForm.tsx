@@ -23,7 +23,7 @@ function DialogueForm({ name, chatId }: DialogueFormProps) {
 
   return (
     <form
-      className="w-full relative flex max-w-[1000px] items-center"
+      className="w-full relative flex max-w-[600px] items-center"
       onSubmit={handleSendMessage}
     >
       <input

@@ -51,9 +51,9 @@ function CharacterDetails() {
   }
 
   return (
-    <>
+    <div className="flex flex-col w-full items-center">
       <ReturnButton />
-      <div className="flex flex-col gap-6 mt-6">
+      <div className="flex flex-col gap-4 w-full mt-6 items-center">
         <CharacterDetailCard
           loggedInUserId={user?.id}
           creatorId={character?.creator?.id}
@@ -69,11 +69,18 @@ function CharacterDetails() {
             {character?.description}
           </p>
         </CardWrapper>
+
+        <CardWrapper heading="Personality Tags">
+          <Tags tags={character?.tags} />
+        </CardWrapper>
         {characters?.length > 0 && character.id === characterId && (
           <CardWrapper heading="Similar Characters">
             <ul className="max-h-[150px]">
               {characters?.map((characterInfo: CharacterInterface) => (
-                <Link key={characterInfo.id} to={`/${characterInfo.id}`}>
+                <Link
+                  key={characterInfo.id}
+                  to={`/character/${characterInfo.id}`}
+                >
                   <CharacterListItem
                     characterName={characterInfo.characterName}
                     image={characterInfo.avatar}
@@ -83,11 +90,8 @@ function CharacterDetails() {
             </ul>
           </CardWrapper>
         )}
-        <CardWrapper heading="Personality Tags">
-          <Tags tags={character?.tags} />
-        </CardWrapper>
       </div>
-    </>
+    </div>
   );
 }
 

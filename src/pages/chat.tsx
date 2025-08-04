@@ -49,7 +49,7 @@ function Chat() {
           backgroundImage: `url(${theme})`,
         }}
       >
-        <div className="w-full flex flex-col gap-4  max-w-[705px] px-4 pt-[100px] pb-[140px] overflow-y-auto">
+        <div className="w-full flex flex-col gap-4  max-w-[705px] px-4 pt-[100px] pb-[62px] overflow-y-auto">
           <ChatPersonaCard
             avatar={chatData?.chat.character?.avatar}
             characterName={chatData?.chat?.character?.characterName}
@@ -66,7 +66,7 @@ function Chat() {
       <div
         className={`fixed w-full max-md:bg-[#18181b] ${
           theme ? "backdrop-blur-md" : "bg-[#18181b]"
-        }  max-md:p-2  p-3 flex justify-center bottom-0`}
+        }  p-2 flex justify-center bottom-0`}
       >
         <DialogueForm
           name={chatData?.chat?.character?.characterName}

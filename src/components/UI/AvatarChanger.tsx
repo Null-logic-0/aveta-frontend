@@ -41,7 +41,7 @@ function AvatarChanger({ name, error, uploadedImage }: AvatarChangerProps) {
         />
         <button
           onClick={handleOpenModal}
-          className="cursor-pointer rounded-full bg-[#18181b] z-50 p-2 absolute bottom-0 left-16"
+          className="cursor-pointer rounded-full bg-[#18181b] z-10 p-2 absolute bottom-0 left-16"
           type="button"
         >
           <FaRegEdit className="text-white" />

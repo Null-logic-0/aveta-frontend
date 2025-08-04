@@ -1,13 +1,16 @@
 import { useState } from "react";
-import defaultProfile from "../../assets/default.jpg";
+import { useDispatch } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
+import RoundedImage from "../UI/RoundedImage";
+import defaultProfile from "../../assets/default.jpg";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import UserProfileMenuList from "./UserProfileMenuList";
-import RoundedImage from "../UI/RoundedImage";
+import { closeSideBar } from "../../store/UI-slice";
 
 function UserProfileMenu() {
   const [openMenu, setOpenMenu] = useState(false);
   const { data } = useAuth();
+  const dispatch = useDispatch();
   const user = data?.data.data;
   const isPaid = user?.isPaid;
 
@@ -16,7 +19,10 @@ function UserProfileMenu() {
       <UserProfileMenuList
         openMenu={openMenu}
         userId={user?.id}
-        onClose={() => setOpenMenu(false)}
+        onClose={() => {
+          setOpenMenu(false);
+          dispatch(closeSideBar());
+        }}
       />
       <div
         className={`flex w-full justify-between items-center py-2 px-2 bg-[#1E1E25] ${

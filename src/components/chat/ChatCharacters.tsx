@@ -1,11 +1,15 @@
+import { useDispatch } from "react-redux";
 import { useFetchChats } from "../../hooks/useFetchChats";
 import { ChatInterface } from "../../interfaces/chat.interface";
 import ChatCharacter from "./ChatCharacter";
 import ChatLoader from "./ChatLoader";
+import { closeSideBar } from "../../store/UI-slice";
 
 function ChatCharacters() {
   const { data, isError, error, isPending } = useFetchChats();
   const chats = data?.data;
+  const dispatch = useDispatch();
+  const closeHandler = () => dispatch(closeSideBar());
 
   return (
     <ul className="w-full py-2  flex flex-col gap-2 overflow-y-scroll h-[80%] max-md:h-[50%]">
@@ -18,6 +22,7 @@ function ChatCharacters() {
             characterImage={chat?.character?.avatar}
             characterName={chat?.character?.characterName}
             link={`/chat/${chat.id}`}
+            onClick={closeHandler}
           />
         ))}
       {isError && !isPending && (
