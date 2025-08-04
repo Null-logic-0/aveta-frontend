@@ -21,14 +21,14 @@ function CreateCharacter() {
   }
 
   return (
-    <>
+    <div className="flex flex-col w-full items-center">
       <ReturnButton />
       <CharacterForm
         onSubmit={handleSubmit}
         isPending={isPending}
         error={formErrors}
       />
-    </>
+    </div>
   );
 }
 

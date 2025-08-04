@@ -94,8 +94,6 @@ function TagDropdown({
       >
         {selectedValues.map((val) => {
           const option = options.find((o) => o.value === val);
-          console.log("selectedValues:", selectedValues);
-          console.log("options:", options);
 
           return (
             <div

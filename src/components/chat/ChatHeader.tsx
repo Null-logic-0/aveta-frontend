@@ -34,7 +34,7 @@ function ChatHeader({
         <div className="flex items-center gap-2">
           <button
             className="cursor-pointer text-xl"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
           >
             <MdOutlineArrowBackIos />
           </button>

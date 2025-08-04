@@ -10,9 +10,9 @@ function Tab({ label, isActive, onClick }: TabProps) {
       onClick={onClick}
       className={`${
         isActive ? "bg-[#8A38F5]" : "bg-[#1E1E25]"
-      } rounded-3xl px-4 py-2 cursor-pointer w-[164px] max-sm:w-[124px]`}
+      } rounded-3xl px-4 py-2 cursor-pointer`}
     >
-      <p className="font-medium text-sm">{label.toUpperCase()}</p>
+      <p className="font-medium text-xs">{label.toUpperCase()}</p>
     </button>
   );
 }

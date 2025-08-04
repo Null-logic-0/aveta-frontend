@@ -4,8 +4,8 @@ import Input from "./UI/Input";
 
 function HomeHeader({ onSearch }: { onSearch: (value: string) => void }) {
   return (
-    <header className="w-full flex flex-col   gap-6 max-md:mt-[30px]">
-      <div className="flex justify-between  max-w-[1020px]  flex-wrap max-lg:justify-center items-center w-full">
+    <header className="w-full flex flex-col    gap-6 max-md:mt-[30px]">
+      <div className="flex justify-between flex-wrap max-lg:justify-center items-center w-full">
         <Welcome />
 
         <Input

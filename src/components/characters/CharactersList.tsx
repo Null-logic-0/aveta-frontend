@@ -36,7 +36,7 @@ function CharactersList({
   }
 
   return (
-    <ul className="flex gap-4 justify-start max-lg:justify-center items-center flex-wrap">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {characters?.map((character) => (
         <CharacterCard
           key={character.id}

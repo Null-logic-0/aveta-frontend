@@ -13,6 +13,8 @@ function SideBarMenu() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const closeHandler = () => dispatch(closeSideBar());
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex justify-between items-center ">
@@ -21,9 +23,7 @@ function SideBarMenu() {
         </Link>
         <button
           className="cursor-pointer md:hidden"
-          onClick={() => {
-            dispatch(closeSideBar());
-          }}
+          onClick={() => closeHandler}
         >
           <MdArrowBackIosNew className="text-lg" />
         </button>
@@ -31,8 +31,11 @@ function SideBarMenu() {
 
       <Button
         buttonType="outline"
-        className="w-[50%]"
-        onClick={() => navigate("/create-character")}
+        className="w-[40%]"
+        onClick={() => {
+          navigate("/create-character");
+          closeHandler();
+        }}
       >
         <FaPlus />
         Create

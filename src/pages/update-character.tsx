@@ -32,7 +32,7 @@ function UpdateCharacter() {
     mutate(data);
   }
   return (
-    <>
+    <div className="flex flex-col w-full items-center">
       <ReturnButton />
       <CharacterForm
         character={character}
@@ -40,7 +40,7 @@ function UpdateCharacter() {
         error={formErrors}
         isPending={isPending}
       />
-    </>
+    </div>
   );
 }
 

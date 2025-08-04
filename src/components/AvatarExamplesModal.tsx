@@ -49,7 +49,7 @@ function AvatarExamplesModal({
             Close
           </button>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-6 overflow-y-auto h-full max-h-[355px]">
+        <div className="flex flex-wrap items-center justify-start gap-6 overflow-y-auto h-full max-h-[355px]">
           {!isError &&
             !isPending &&
             images?.map((img: EntityImageInterface) => (

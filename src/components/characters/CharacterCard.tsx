@@ -29,21 +29,21 @@ function CharacterCard({
   const { mutate, isPending } = useCreateChat({ id: characterId });
 
   return (
-    <li className="min-xl:max-w-[330px] max-xl:max-w-[375px] lg:max-w-[325px] sm:max-w-[375px] max-md:max-w-[375px] md:max-w-[300px]  flex flex-col gap-3  p-3 bg-[#1E1E25] rounded-xl">
-      <div className="flex items-start  gap-3">
+    <li className="w-full max-w-[478px]  min-w-[205px] flex flex-col justify-between gap-3 p-3 bg-[#1E1E25] rounded-xl">
+      <div className="flex items-start gap-3">
         <RoundedImage
           src={avatar || defaultProfile}
           alt="User profile image"
           className="w-[52px] h-[52px] "
         />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col  gap-2">
           <Link to={`/character/${characterId}`}>
             <p className="font-bold text-lg hover:underline underline-offset-2">
-              {characterName}
+              {textSlicer(characterName, 20)}
             </p>
           </Link>
           <p className="font-medium text-sm opacity-50">
-            {textSlicer(description, 50)}
+            {textSlicer(description, 40)}
           </p>
           <CharacterStats likes={likes} />
           <Tags tags={tags} />
@@ -53,9 +53,9 @@ function CharacterCard({
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium opacity-50">{creator}</span>
         <Button
-          className="w-22"
           onClick={() => mutate()}
           isDisabled={isPending}
+          className="w-30"
         >
           Message
         </Button>
