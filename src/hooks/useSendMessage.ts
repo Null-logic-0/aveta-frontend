@@ -1,11 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useAuth } from "./useAuth";
 import { sendMessage } from "../util/http";
 import {
   ChatMessagesCache,
   SendMessageInterface,
 } from "../interfaces/chat.interface";
+import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../constants/query-client.constants";
+
 import toast from "react-hot-toast";
 
 export function useSendMessage({ id }: { id: number }) {
@@ -80,9 +82,18 @@ export function useSendMessage({ id }: { id: number }) {
       queryClient.invalidateQueries({ queryKey: ["chat-messages", id] });
     },
 
-    onError: (_err, _newMessage, context) => {
+    onError: (err: unknown, _newMessage, context) => {
       queryClient.setQueryData(["chat-messages", id], context?.previous);
-      toast.error("Failed to send message.");
+      let errorMessage = "Failed to send message.";
+
+      if (err instanceof AxiosError) {
+        errorMessage =
+          err.response?.data?.message || err.message || errorMessage;
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+
+      toast.error(errorMessage);
     },
   });
 

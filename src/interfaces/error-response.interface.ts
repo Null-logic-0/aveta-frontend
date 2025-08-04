@@ -23,3 +23,8 @@ export interface CharacterValidationErrorResponse {
   };
   message?: string;
 }
+
+export interface ApiError extends Error {
+  statusCode?: number;
+  errorType?: string;
+}
