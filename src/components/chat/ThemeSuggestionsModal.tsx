@@ -1,4 +1,4 @@
-import Modal from "../UI/modal/Modal";
+import Modal from "../UI/Modal/Modal";
 import { useFetchEntityImages } from "../../hooks/useFetchEntityImages";
 import { EntityImageType } from "../../enums/entity-images.enum";
 import { EntityImageInterface } from "../../interfaces/entity-image.interface";

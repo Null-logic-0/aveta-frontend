@@ -7,7 +7,7 @@ import { toNumericId } from "../helpers/toNumericId";
 import { useFetchUser } from "../hooks/useFetchUser";
 
 import Empty from "../components/UI/Empty";
-import Spinner from "../components/UI/spinner/Spinner";
+import Spinner from "../components/UI/Spinner/Spinner";
 import ReturnButton from "../components/UI/ReturnButton";
 import UserProfileInfo from "../components/user-profile-info/UserProfileInfo";
 import UserProfileTabs from "../components/user-profile-info/UserProfileTabs";

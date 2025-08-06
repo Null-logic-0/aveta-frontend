@@ -1,5 +1,5 @@
 import Empty from "../UI/Empty";
-import Spinner from "../UI/spinner/Spinner";
+import Spinner from "../UI/Spinner/Spinner";
 import CharacterCard from "./CharacterCard";
 import { CharacterInterface } from "../../interfaces/character.interface";
 import AppResult from "../UI/AppResult";

@@ -4,7 +4,7 @@ import { close } from "../../store/UI-slice";
 import { useAuth } from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 
-import Modal from "../UI/modal/Modal";
+import Modal from "../UI/Modal/Modal";
 import UpdatePassword from "./UpdatePassword";
 import SettingsMenuItem from "./SettingsMenuItem";
 import UpdateProfile from "./UpdateProfile";

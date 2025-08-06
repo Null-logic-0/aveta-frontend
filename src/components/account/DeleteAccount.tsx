@@ -1,6 +1,6 @@
 import { useDeleteAccount } from "../../hooks/useDeleteAccount";
 import Button from "../UI/Button";
-import Modal from "../UI/modal/Modal";
+import Modal from "../UI/Modal/Modal";
 
 type DeleteAccountProps = {
   onClose: () => void;

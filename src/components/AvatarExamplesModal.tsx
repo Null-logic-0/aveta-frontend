@@ -1,4 +1,4 @@
-import Modal from "./UI/modal/Modal";
+import Modal from "./UI/Modal/Modal";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { EntityImageType } from "../enums/entity-images.enum";
 import { useFetchEntityImages } from "../hooks/useFetchEntityImages";

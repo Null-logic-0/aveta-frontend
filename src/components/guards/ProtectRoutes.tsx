@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
-import Spinner from "../UI/spinner/Spinner";
+import Spinner from "../UI/Spinner/Spinner";
 
 type ProtectRoutesProps = {
   children: React.ReactNode;

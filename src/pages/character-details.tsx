@@ -8,7 +8,7 @@ import { CharacterInterface } from "../interfaces/character.interface";
 import Empty from "../components/UI/Empty";
 import Tags from "../components/characters/tags/Tags";
 import CardWrapper from "../components/UI/CardWrapper";
-import Spinner from "../components/UI/spinner/Spinner";
+import Spinner from "../components/UI/Spinner/Spinner";
 import ReturnButton from "../components/UI/ReturnButton";
 import CharacterListItem from "../components/characters/CharacterListItem";
 import CharacterDetailCard from "../components/characters/CharacterDetailCard";

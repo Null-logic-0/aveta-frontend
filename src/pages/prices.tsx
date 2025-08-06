@@ -9,7 +9,7 @@ function Prices() {
   const { mutate, isPending } = useStartCheckout();
 
   return (
-    <>
+    <div className="flex flex-col w-full items-center">
       <ReturnButton />
       <main className="flex flex-col justify-center gap-8 mt-10 items-center">
         <Heading isTitle title="Unlock the Full AI Experience" />
@@ -63,7 +63,7 @@ function Prices() {
           </PricePlan>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 
