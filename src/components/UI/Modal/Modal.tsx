@@ -9,7 +9,7 @@ type ModalProps = {
   className?: string;
 };
 
-export default function Modal({ children, onClose, className }: ModalProps) {
+function Modal({ children, onClose, className }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
@@ -55,3 +55,5 @@ export default function Modal({ children, onClose, className }: ModalProps) {
     modalRoot
   );
 }
+
+export default Modal;

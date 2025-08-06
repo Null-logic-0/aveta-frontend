@@ -1,9 +1,8 @@
+import Modal from "./UI/modal/Modal";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { EntityImageType } from "../enums/entity-images.enum";
 import { useFetchEntityImages } from "../hooks/useFetchEntityImages";
 import { EntityImageInterface } from "../interfaces/entity-image.interface";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-
-import Modal from "./UI/modal/Modal";
 
 type AvatarExamplesModalProps = {
   onClose: () => void;
