@@ -55,7 +55,6 @@ export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
-
     element: (
       <ProtectRoutes>
         <RootLayout />
