@@ -55,7 +55,7 @@ function Home() {
             }
           />
           <div className="w-full flex justify-end max-sm:justify-center">
-            {!isPending && !isError && (
+            {!isPending && !isError && !characters && (
               <Pagination
                 onPageChange={(page) => setCurrentPage(page)}
                 currentPage={currentPage}
