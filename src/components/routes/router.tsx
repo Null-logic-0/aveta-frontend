@@ -54,6 +54,8 @@ export const router = createBrowserRouter([
 
   {
     path: "/",
+    errorElement: <ErrorPage />,
+
     element: (
       <ProtectRoutes>
         <RootLayout />
@@ -88,6 +90,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/chat/:chatId",
+    errorElement: <ErrorPage />,
+
     element: (
       <ProtectRoutes>
         <ChatRootLayout />
@@ -102,10 +106,14 @@ export const router = createBrowserRouter([
   },
   {
     path: "/payment-succeed",
+    errorElement: <ErrorPage />,
+
     element: <PaymentSucceed />,
   },
   {
     path: "/payment-declined",
+    errorElement: <ErrorPage />,
+
     element: <PaymentDeclined />,
   },
 ]);

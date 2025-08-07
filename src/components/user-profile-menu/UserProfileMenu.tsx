@@ -38,7 +38,7 @@ function UserProfileMenu() {
           />
           <p className="flex flex-col  text-sm font-semibold">
             <span>{user?.userName}</span>
-            <span className="opacity-50">{user?.email}</span>
+            <span className="opacity-50 text-xs">{user?.email}</span>
           </p>
         </div>
         <button
