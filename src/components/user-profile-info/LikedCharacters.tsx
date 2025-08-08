@@ -33,7 +33,7 @@ function LikedCharacters({ id }: { id?: number }) {
         isLoading={isLoading}
       />
       <div className="w-full flex justify-end max-sm:justify-center">
-        {!isLoading && !isError && !characters && (
+        {!isLoading && !isError && (
           <Pagination
             onPageChange={(page) => setCurrentPage(page)}
             currentPage={currentPage}

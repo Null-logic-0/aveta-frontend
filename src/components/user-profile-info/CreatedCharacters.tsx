@@ -29,7 +29,7 @@ function CreatedCharacters({ id }: { id?: number }) {
         }
       />
       <div className="w-full flex justify-end max-sm:justify-center">
-        {!isLoading && !isError && !characters && (
+        {!isLoading && !isError && (
           <Pagination
             onPageChange={(page) => setCurrentPage(page)}
             currentPage={currentPage}
