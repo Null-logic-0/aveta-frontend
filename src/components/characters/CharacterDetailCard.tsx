@@ -5,6 +5,7 @@ import CardWrapper from "../UI/CardWrapper";
 import CharacterStats from "./CharacterStats";
 import CharacterMenuList from "./CharacterMenuList";
 import { Link } from "react-router";
+import { useCreateChat } from "../../hooks/useCreateChat";
 
 type CharacterDetailProps = {
   characterId: number;
@@ -27,6 +28,8 @@ function CharacterDetailCard({
   likes,
   creator,
 }: CharacterDetailProps) {
+  const { mutate, isPending } = useCreateChat({ id: characterId });
+
   return (
     <CardWrapper>
       {creatorId === loggedInUserId && (
@@ -52,7 +55,13 @@ function CharacterDetailCard({
           <p className="font-medium text-sm opacity-70 border-l-2 pl-2 border-[#8A38F5]">
             "{greeting}"
           </p>
-          <Button className="w-40">Message</Button>
+          <Button
+            onClick={() => mutate()}
+            isDisabled={isPending}
+            className="w-40"
+          >
+            Message
+          </Button>
         </div>
       </div>
     </CardWrapper>
