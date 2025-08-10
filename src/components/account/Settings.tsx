@@ -29,7 +29,7 @@ function Settings() {
   }
   return (
     <>
-      {active === user?.id && (
+      {active === "user-settings" && (
         <Modal
           className="p-0 max-w-[622px]  w-full max-sm:max-h-[100vh] max-sm:top-0 max-sm:h-full max-sm:rounded-none"
           onClose={handleClose}
@@ -48,7 +48,7 @@ function Settings() {
               >
                 Profile
               </SettingsMenuItem>
-              {user.googleId !== null && (
+              {user?.googleId !== null && (
                 <SettingsMenuItem
                   navigate={() => handleNavigate("update-password")}
                   isActive={navigate === "update-password"}

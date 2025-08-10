@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/UI-slice";
-import { useAuth } from "../../hooks/useAuth";
 
 import { FaUser } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
@@ -23,8 +22,7 @@ function UserProfileMenuList({
   onClose,
 }: UserProfileMenuListProps) {
   const { mutate, isPending } = useSignOut();
-  const { data } = useAuth();
-  const user = data?.data?.data;
+
   const dispatch = useDispatch();
 
   return (
@@ -47,7 +45,7 @@ function UserProfileMenuList({
 
       <DropDownMenuItem
         disabled={isPending}
-        operation={() => dispatch(open(user?.id))}
+        operation={() => dispatch(open("user-settings"))}
         onClose={onClose}
       >
         Settings
