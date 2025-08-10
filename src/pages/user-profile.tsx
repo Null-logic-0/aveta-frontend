@@ -52,7 +52,7 @@ function UserProfile() {
         <UserProfileInfo
           image={user?.profileImage}
           userName={user?.userName}
-          onOpenSettings={() => dispatch(open(currentUser?.id))}
+          onOpenSettings={() => dispatch(open("user-settings"))}
           isCurrentUser={isCurrentUser}
         />
         <UserProfileTabs setNavigate={setNavigate} navigate={navigate} />
